@@ -1,17 +1,17 @@
 /*
- * EuclideanGraph.cpp
+ * GraphEdge.cpp
  *
  *  Created on: Oct 23, 2022
  *      Author: potts
  */
 
-#include "EuclideanGraph.h"
+#include "GraphEdge.h"
 
-EuclideanGraph::EuclideanGraph(std::string data_file) {
+GraphEdge::GraphEdge(EuclideanPoint node, EuclideanPoint next) {
 	// TODO Auto-generated constructor stub
 }
 
-EuclideanGraph::~EuclideanGraph() {
+GraphEdge::~GraphEdge() {
 	// TODO Auto-generated destructor stub
 }
 
