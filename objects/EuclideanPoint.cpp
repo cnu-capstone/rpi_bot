@@ -5,13 +5,21 @@
  *      Author: potts
  */
 
-#include "EuclideanPoint.h"
+#include "includes/EuclideanPoint.h"
 
-EuclideanPoint::EuclideanPoint(int point_id, int px, int py):id(point_id),x(px),y(py) {
-	// TODO Auto-generated constructor stub
+EuclideanPoint::EuclideanPoint(int point_id, int px, int py):id(point_id),x(px),y(py) {}
+
+EuclideanPoint::~EuclideanPoint() {}  // Has no dynamic memory
+
+int EuclideanPoint::getPointID() {
+	return this->id;
 }
 
-EuclideanPoint::~EuclideanPoint() {
-	// TODO Auto-generated destructor stub
+int EuclideanPoint::getX() {
+	return this->x;
+}
+
+int EuclideanPoint::getY() {
+	return this->y;
 }
 
