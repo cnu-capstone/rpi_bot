@@ -1,5 +1,5 @@
 #include "pico/stdlib.h"
-#include "pico/cyw43_arch.h"
+//#include "pico/cyw43_arch.h"
 
 int main() {
     // stdio_init_all();
@@ -11,10 +11,10 @@ int main() {
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, GPIO_OUT);
     while (true) {
-        gpio_put(LED_PIN, 1);
+        gpio_put(LED_PIN, true);
         // cyw43_arch_gpio_put();
         sleep_ms(330);
-        gpio_put(LED_PIN, 0);
+        gpio_put(LED_PIN, false);
         // cyw43_arch_gpio_put();
         sleep_ms(330);
     }
