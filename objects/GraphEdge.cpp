@@ -7,11 +7,17 @@
 
 #include "GraphEdge.h"
 
-GraphEdge::GraphEdge(EuclideanPoint node, EuclideanPoint next) {
-	// TODO Auto-generated constructor stub
+GraphEdge::GraphEdge(EuclideanPoint pnode, EuclideanPoint* pnext):node(pnode),next(pnext) {
 }
 
 GraphEdge::~GraphEdge() {
-	// TODO Auto-generated destructor stub
+	// Delete Pointer?
 }
 
+EuclideanPoint GraphEdge::getPoint() {
+	return this->node;
+}
+
+EuclideanPoint* GraphEdge::getNext() {
+	return this->next;
+}
