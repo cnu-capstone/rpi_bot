@@ -9,7 +9,8 @@ include(pico_sdk_import.cmake)
 
 set(PICO_BOARD pico_w)
 
-project(blink C CXX ASM)
+# project(blink C CXX ASM)
+project(input_check C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -17,8 +18,12 @@ set(CMAKE_CXX_STANDARD 17)
 pico_sdk_init()
 
 # rest of your project
+# add_executable(${PROJECT_NAME}
+#         blink/blink.c
+#         )
+
 add_executable(${PROJECT_NAME}
-        blink/blink.c
+        input_check/read_input_check.c
         )
 
 # create map/bin/hex file etc.
