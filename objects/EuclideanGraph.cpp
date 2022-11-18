@@ -5,7 +5,7 @@
  *      Author: potts
  */
 
-#include "EuclideanGraph.h"
+#include "includes/EuclideanGraph.h"
 
 EuclideanGraph::EuclideanGraph(std::string data_file) {
 	// TODO Auto-generated constructor stub

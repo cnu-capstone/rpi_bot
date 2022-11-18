@@ -5,7 +5,7 @@
  *      Author: potts
  */
 
-#include "GraphEdge.h"
+#include "includes/GraphEdge.h"
 
 GraphEdge::GraphEdge(EuclideanPoint pnode, EuclideanPoint* pnext):node(pnode),next(pnext) {
 }

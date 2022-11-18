@@ -5,7 +5,7 @@
  *      Author: potts
  */
 
-#include "DistanceMatrix.h"
+#include "includes/DistanceMatrix.h"
 
 DistanceMatrix::DistanceMatrix(std::string data_set) {
 	this->set_size = 0;  // This be a num read from the file
