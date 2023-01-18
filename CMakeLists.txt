@@ -7,7 +7,8 @@ cmake_minimum_required(VERSION 3.13)
 #include(pico-sdk/pico_sdk_init.cmake)
 include(pico_sdk_import.cmake)
 
-set(PICO_BOARD pico_w)
+# set(PICO_BOARD pico_w)
+set(PICO_BOARD pico)
 
 # project(blink C CXX ASM)
 project(input_check C CXX ASM)
@@ -22,9 +23,9 @@ pico_sdk_init()
 #         blink/blink.c
 #         )
 
-add_executable(${PROJECT_NAME}
-        input_check/read_input_check.c
-        )
+# add_executable(${PROJECT_NAME}
+#         input_check/read_input_check.c
+#         )
 
 # create map/bin/hex file etc.
 pico_add_extra_outputs(${PROJECT_NAME})
