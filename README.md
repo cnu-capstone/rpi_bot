@@ -16,6 +16,10 @@ git submodule update
 
 The Pico-SDK Repository can be found [here](https://github.com/raspberrypi/pico-sdk/tree/2e6142b15b8a75c1227dd3edbe839193b2bf9041).
 
+###Building the Project
+
+####Ubuntu (Unix-based Systems)
+
 To compile a project and generate a .uf2 executable for the PICO: Follow the steps below as seen in the "Getting Started with Raspberry Pi Pico".
 
 ```
