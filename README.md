@@ -16,9 +16,9 @@ git submodule update
 
 The Pico-SDK Repository can be found [here](https://github.com/raspberrypi/pico-sdk/tree/2e6142b15b8a75c1227dd3edbe839193b2bf9041).
 
-### Building the Project
+## Building the Project
 
-#### Ubuntu (Unix-based Systems)
+### Ubuntu (Unix-based Systems)
 
 To compile a project and generate a .uf2 executable for the PICO: Follow the steps below as seen in the "Getting Started with Raspberry Pi Pico".
 
@@ -41,3 +41,9 @@ make
 ```
 
 Instead of make, you may use `make -jX`. Where X is the number of threads available on your PC.
+
+## Changelog
+
+#### 1/19/23
+This project now entirely contains the scripts and applications to support the Raspberry Pi PICO. All routing and such scripts have been moved to the "rpi\_routing" repository at [link](https://github.com/cnu-capstone/rpi_routing.git).
+
