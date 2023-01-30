@@ -44,9 +44,8 @@ Instead of make, you may use `make -jX`. Where X is the number of threads availa
 
 ## Changelog
 
-#### 1/19/23
-This project now entirely contains the scripts and applications to support the Raspberry Pi PICO. All routing and such scripts have been moved to the "rpi\_routing" repository at [link](https://github.com/cnu-capstone/rpi_routing.git).
-
 #### 1/29/23
 Added "parse\_input" subdirectory for development of communication channel between the Raspberry Pi 4B and the Raspberry Pi PICO W. The C file "parse\_input.c" reads the state of GPIO pins 2, 3, 4, and 5 on the PICO W and propogates the respective state to a LED connected to GPIO pin 22 with 1 second (or 1000 ms) intervals. This file is currently in its testing stage of development.
 
+#### 1/19/23
+This project now entirely contains the scripts and applications to support the Raspberry Pi PICO. All routing and such scripts have been moved to the "rpi\_routing" repository at [link](https://github.com/cnu-capstone/rpi_routing.git).
