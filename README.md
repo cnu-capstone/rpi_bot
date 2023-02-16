@@ -44,6 +44,9 @@ Instead of make, you may use `make -jX`. Where X is the number of threads availa
 
 ## Changelog
 
+#### 2/16/23
+Added "motor\_controller" subdirectory for development of motor control logic (i.e. propogating motor state based on received instructions). The C file "motor\_controller.c" simply alternates the direction of Motor 1 (in accordance with "V2 \- Automated Trash Can System Design Report") by changing the state of GPIO pins 20 and 21 on the Raspberry Pi PICO. This file is currently in the testing stage for the purposes of demonstration.
+
 #### 1/29/23
 Added "parse\_input" subdirectory for development of communication channel between the Raspberry Pi 4B and the Raspberry Pi PICO W. The C file "parse\_input.c" reads the state of GPIO pins 2, 3, 4, and 5 on the PICO W and propogates the respective state to a LED connected to GPIO pin 22 with 1 second (or 1000 ms) intervals. This file is currently in its testing stage of development.
 
