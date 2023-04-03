@@ -44,6 +44,13 @@ Instead of make, you may use `make -jX`. Where X is the number of threads availa
 
 ## Changelog
 
+#### 4/01/23
+Added "pi4/uart\_comm/uart\_comm.cpp" to repo for uart transmission to pico device handled in "usb\_comm/usb\_comm.c". Integration with motor\_controller.c is next to communicate and interpret intructions and propogate into motor inputs.
+
+Pi integration between front-end and routing is next step in rpi_routing repo.
+
+Note: pi4 code is does not have makefile to support compilation.
+
 #### 2/16/23
 Added "motor\_controller" subdirectory for development of motor control logic (i.e. propogating motor state based on received instructions). The C file "motor\_controller.c" simply alternates the direction of Motor 1 (in accordance with "V2 \- Automated Trash Can System Design Report") by changing the state of GPIO pins 20 and 21 on the Raspberry Pi PICO. This file is currently in the testing stage for the purposes of demonstration.
 
