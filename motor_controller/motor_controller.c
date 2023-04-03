@@ -58,6 +58,16 @@ void motor_forward(int duty_cycle) {
     }
 }
 
+// void motor_forward() {
+//     // SET MOTOR DIRECTION FORWARD
+//     gpio_put(MOTOR1_POS_PIN, true);
+//     gpio_put(MOTOR2_POS_PIN, true);
+//     // SET MOTOR STATE TO ON
+//     gpio_put(MOTOR1_ENABLE_PIN, true);
+//     gpio_put(MOTOR2_ENABLE_PIN, true);
+//     sleep_ms(250);
+// }
+
 // void motor_reverse() {
 //     sleep_ms(100);
 //     gpio_put(MOTOR_POS_PIN, false);

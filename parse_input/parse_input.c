@@ -29,8 +29,8 @@ void blink_led() {
 
 void pico_load_instr() {
     for (int i = 0; i < bit_width; i++) {
-        // instructions[i] = gpio_get(COMM_PORTS[i]);  // Load instruction from respective pin state
-        instructions[i] = i%2==0;  // Load instruction for testing (T,F,T,F)
+        instructions[i] = gpio_get(COMM_PORTS[i]);  // Load instruction from respective pin state
+        // instructions[i] = i%2==0;  // Load instruction for testing (T,F,T,F)
     }
 }
 
