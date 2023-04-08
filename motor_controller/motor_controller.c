@@ -12,7 +12,9 @@
 bool INSTRUCTIONS[bit_width] = {false, false, false};  // Enable, A, B
 const uint MOTOR1_ENABLE_PIN = 18;  // Right Motor
 const uint MOTOR1_POS_PIN = 19;
+const uint MOTOR1_NEG_PIN = 16;
 const uint MOTOR2_POS_PIN = 20;
+const uint MOTOR2_NEG_PIN = 17;
 const uint MOTOR2_ENABLE_PIN = 21;  // Left Motor
 // const uint LED_PIN = PICO_DEFAULT_LED_PIN;  // PICO W is pin 22
 const uint LED_PIN = 22;  // Uncomment for PICO W usage
@@ -37,11 +39,15 @@ void pico_init() {
     gpio_set_dir(MOTOR1_POS_PIN, GPIO_OUT);
     gpio_init(MOTOR1_ENABLE_PIN);
     gpio_set_dir(MOTOR1_ENABLE_PIN, GPIO_OUT);
+    gpio_init(MOTOR1_NEG_PIN);
+    gpio_set_dir(MOTOR1_NEG_PIN, GPIO_OUT);
     // MOTOR2 INIT
     gpio_init(MOTOR2_POS_PIN);
     gpio_set_dir(MOTOR2_POS_PIN, GPIO_OUT);
     gpio_init(MOTOR2_ENABLE_PIN);
     gpio_set_dir(MOTOR2_ENABLE_PIN, GPIO_OUT);
+    gpio_init(MOTOR2_NEG_PIN);
+    gpio_set_dir(MOTOR2_NEG_PIN, GPIO_OUT);
     // LED PIN INIT
     gpio_init(LED_PIN);
     gpio_set_dir(LED_PIN, GPIO_OUT);
@@ -50,15 +56,19 @@ void pico_init() {
 void pico_deinit() {
     gpio_put(MOTOR1_POS_PIN, false);
     gpio_put(MOTOR1_ENABLE_PIN, false);
+    gpio_put(MOTOR1_NEG_PIN, false);
     gpio_put(MOTOR2_POS_PIN, false);
     gpio_put(MOTOR2_ENABLE_PIN, false);
+    gpio_put(MOTOR2_NEG_PIN, false);
     gpio_put(LED_PIN, false);
     // MOTOR1 DEINIT
     gpio_deinit(MOTOR1_POS_PIN);
     gpio_deinit(MOTOR1_ENABLE_PIN);
+    gpio_deinit(MOTOR1_NEG_PIN);
     // MOTOR2 DEINIT
     gpio_deinit(MOTOR2_POS_PIN);
     gpio_deinit(MOTOR2_ENABLE_PIN);
+    gpio_deinit(MOTOR1_NEG_PIN);
     // LED PIN DEINIT
     gpio_deinit(LED_PIN);
 }
@@ -81,7 +91,9 @@ void pico_deinit() {
 void motor_forward() {
     // SET MOTOR DIRECTION FORWARD
     gpio_put(MOTOR1_POS_PIN, true);
+    gpio_put(MOTOR1_NEG_PIN, false);
     gpio_put(MOTOR2_POS_PIN, true);
+    gpio_put(MOTOR2_NEG_PIN, false);
     // SET MOTOR STATE TO ON
     gpio_put(MOTOR1_ENABLE_PIN, true);
     gpio_put(MOTOR2_ENABLE_PIN, true);
@@ -91,7 +103,9 @@ void motor_forward() {
 void motor_right() {  // 0 Degree Turn
     // SET LEFT MOTOR FORWARD and RIGHT MOTOR BACKWARD
     gpio_put(MOTOR2_POS_PIN, true);
+    gpio_put(MOTOR2_NEG_PIN, false);
     gpio_put(MOTOR1_POS_PIN, false);
+    gpio_put(MOTOR1_NEG_PIN, true);
     // SET MOTOR STATE TO ON
     gpio_put(MOTOR2_ENABLE_PIN, true);
     gpio_put(MOTOR1_ENABLE_PIN, true);
@@ -101,7 +115,9 @@ void motor_right() {  // 0 Degree Turn
 void motor_left() {  // 0 Degree Turn
     // SET RIGHT MOTOR FORWARD and LEFT MOTOR BACKWARD
     gpio_put(MOTOR2_POS_PIN, false);
+    gpio_put(MOTOR2_NEG_PIN, true);
     gpio_put(MOTOR1_POS_PIN, true);
+    gpio_put(MOTOR1_NEG_PIN, false);
     // SET MOTOR STATE TO ON
     gpio_put(MOTOR2_ENABLE_PIN, true);
     gpio_put(MOTOR1_ENABLE_PIN, true);
@@ -130,18 +146,23 @@ int main() {
         read_stream(cmd);
 
         for (int i = 0; i < bit_width; i ++) {
-            if (cmd[i] == '1') {
-                INSTRUCTIONS[i] = true;
-            }
+            // printf(" CMD at %i is %c", i, cmd[i]);
+            // if (cmd[i] == '1') {
+                // INSTRUCTIONS[i] = true;
+            // }
+            INSTRUCTIONS[i] = cmd[i] == '1';
         }
 
         if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 111
+            // printf("Forward");
             motor_forward();
         }
         else if (INSTRUCTIONS[0] && !INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 101
+            // printf("Left");
             motor_left();
         }
         else if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && !INSTRUCTIONS[2]) {  // 110
+            // printf("Right");
             motor_right();
         }
         else {
