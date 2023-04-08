@@ -80,34 +80,36 @@ int main() {
 	//std::string msg_string = "011,0001";
 	std::string msg_string;
 	
-	std::cout<<"Please enter command: ";
-	std::cin>>msg_string;
-	std::cout<<std::endl;
-	
-	strcpy(msg, msg_string.c_str());
-	
-	sleep(1);
-	
-	write(uart_port, msg, sizeof(msg));
-	
-	int bytes_read = read(uart_port, &read_buff, sizeof(read_buff));
-	
-	if (bytes_read < 0) {
-		//printf("Error reading...\n");
-		std::cout<<"Error reading data..."<<std::endl;
+	while (1) {
+		std::cout<<"Please enter command: ";
+		std::cin>>msg_string;
+		std::cout<<std::endl;
+		
+		strcpy(msg, msg_string.c_str());
+		
+		sleep(1);
+		
+		write(uart_port, msg, sizeof(msg));
+		
+		int bytes_read = read(uart_port, &read_buff, sizeof(read_buff));
+		
+		if (bytes_read < 0) {
+			//printf("Error reading...\n");
+			std::cout<<"Error reading data..."<<std::endl;
+		}
+		
+		//printf("Read %i bytes. Received message: ", bytes_read);
+		std::cout<<"Read "<<bytes_read<<" bytes. Received message: ";
+		
+		const char* char_p = &read_buff[0];
+		
+		for (int i = 0; i < bytes_read; i++) {
+			std::cout<<*(char_p+i);
+			//printf(*(char_p+i));
+		}
+		std::cout<<std::endl;
+		//printf("\n");
 	}
-	
-	//printf("Read %i bytes. Received message: ", bytes_read);
-	std::cout<<"Read "<<bytes_read<<" bytes. Received message: ";
-	
-	const char* char_p = &read_buff[0];
-	
-	for (int i = 0; i < bytes_read; i++) {
-		std::cout<<*(char_p+i);
-		//printf(*(char_p+i));
-	}
-	std::cout<<std::endl;
-	//printf("\n");
 	
 	close(uart_port);
 	return SUCCESS;
