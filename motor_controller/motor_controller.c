@@ -1,4 +1,5 @@
 #include <stdio.h>  // COMM STUFF
+#include <math.h>  // For POW function
 #include "pico/stdlib.h"
 
 #ifndef bit_width
@@ -88,7 +89,7 @@ void pico_deinit() {
 //     }
 // }
 
-void motor_forward() {
+void motor_forward(uint8_t duration) {
     // SET MOTOR DIRECTION FORWARD
     gpio_put(MOTOR1_POS_PIN, true);
     gpio_put(MOTOR1_NEG_PIN, false);
@@ -97,10 +98,22 @@ void motor_forward() {
     // SET MOTOR STATE TO ON
     gpio_put(MOTOR1_ENABLE_PIN, true);
     gpio_put(MOTOR2_ENABLE_PIN, true);
-    sleep_ms(1000);
+    sleep_ms(duration * 1000);
 }
 
-void motor_right() {  // 0 Degree Turn
+void motor_reverse(uint8_t duration) {
+    // SET MOTOR DIRECTION BACKWARD
+    gpio_put(MOTOR1_POS_PIN, false);
+    gpio_put(MOTOR1_NEG_PIN, true);
+    gpio_put(MOTOR2_POS_PIN, false);
+    gpio_put(MOTOR2_NEG_PIN, true);
+    // SET MOTOR STATE TO ON
+    gpio_put(MOTOR1_ENABLE_PIN, true);
+    gpio_put(MOTOR2_ENABLE_PIN, true);
+    sleep_ms(duration * 1000);
+}
+
+void motor_right(uint8_t duration) {  // 0 Degree Turn
     // SET LEFT MOTOR FORWARD and RIGHT MOTOR BACKWARD
     gpio_put(MOTOR2_POS_PIN, true);
     gpio_put(MOTOR2_NEG_PIN, false);
@@ -109,10 +122,10 @@ void motor_right() {  // 0 Degree Turn
     // SET MOTOR STATE TO ON
     gpio_put(MOTOR2_ENABLE_PIN, true);
     gpio_put(MOTOR1_ENABLE_PIN, true);
-    sleep_ms(1000);
+    sleep_ms(duration * 1000);
 }
 
-void motor_left() {  // 0 Degree Turn
+void motor_left(uint8_t duration) {  // 0 Degree Turn
     // SET RIGHT MOTOR FORWARD and LEFT MOTOR BACKWARD
     gpio_put(MOTOR2_POS_PIN, false);
     gpio_put(MOTOR2_NEG_PIN, true);
@@ -121,7 +134,7 @@ void motor_left() {  // 0 Degree Turn
     // SET MOTOR STATE TO ON
     gpio_put(MOTOR2_ENABLE_PIN, true);
     gpio_put(MOTOR1_ENABLE_PIN, true);
-    sleep_ms(1000);
+    sleep_ms(duration * 1000);
 }
 
 // void motor_reverse() {
@@ -153,17 +166,30 @@ int main() {
             INSTRUCTIONS[i] = cmd[i] == '1';
         }
 
+        uint8_t cmd_duration = 0;
+        // Calculate distance
+        for (int i = 3; i < CMD_LEN; i++) {
+            int cmd_val = 0;
+            if (cmd[i] == '1') {
+                cmd_val = 1;
+            }
+            cmd_duration += cmd_val * pow(2, i);
+        }
+
         if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 111
             // printf("Forward");
-            motor_forward();
+            motor_forward(cmd_duration);
         }
         else if (INSTRUCTIONS[0] && !INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 101
             // printf("Left");
-            motor_left();
+            motor_left(cmd_duration);
         }
         else if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && !INSTRUCTIONS[2]) {  // 110
             // printf("Right");
-            motor_right();
+            motor_right(cmd_duration);
+        }
+        else if (!INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 011
+            motor_reverse(cmd_duration);
         }
         else {
             motor_stall();
