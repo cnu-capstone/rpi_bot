@@ -166,14 +166,14 @@ int main() {
             INSTRUCTIONS[i] = cmd[i] == '1';
         }
 
-        uint8_t cmd_duration = 0;
+        uint8_t cmd_duration = 1;
         // Calculate distance
         for (int i = 3; i < CMD_LEN; i++) {
             int cmd_val = 0;
             if (cmd[i] == '1') {
                 cmd_val = 1;
             }
-            cmd_duration += cmd_val * pow(2, i);
+            cmd_duration += cmd_val * pow(2, (CMD_LEN - (i+1)));
         }
 
         if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 111
