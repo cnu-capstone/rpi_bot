@@ -7,6 +7,8 @@
 #include <iostream>
 #include <cstring>
 
+#include "../../includes/FileIO.h"  // File IO header
+
 #define SUCCESS 0
 #define SERIAL_ACCESS_ERR -1
 #define TCGETATTR_ERR -2
@@ -79,11 +81,37 @@ int main() {
 	
 	//std::string msg_string = "011,0001";
 	std::string msg_string;
+
+	// AWS dropbox file
+	std::string filepath = "/home/pi/Desktop/AWS/location.txt";
 	
 	while (1) {
-		std::cout<<"Please enter command: ";
-		std::cin>>msg_string;
-		std::cout<<std::endl;
+		// std::cout<<"Please enter command: ";
+		// std::cin>>msg_string;
+		// std::cout<<std::endl;
+		FileIO fio(filepath);
+
+		bool read_success = fio.read(msg_string);
+
+		// std::cout<<msg_string<<std::endl;
+
+		if (std::strcmp(msg_string.c_str(), "Forward") == 0) {  // If string is "Forward"
+			msg_string = "11100001";
+		}
+		else if (std::strcmp(msg_string.c_str(), "Left") == 0) {  // If string is "Left"
+			msg_string = "10100001";
+		}
+		else if (std::strcmp(msg_string.c_str(), "Right") == 0) {  // If string is "Right"
+			msg_string = "11000001";
+		}
+		else if (std::strcmp(msg_string.c_str(), "Reverse") == 0) {  // If string is "Reverse"
+			msg_string = "01100001";
+		}
+		else {
+			msg_string = "10000000";
+		}
+
+		fio.clear();
 		
 		strcpy(msg, msg_string.c_str());
 		

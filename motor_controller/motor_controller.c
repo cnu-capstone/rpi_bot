@@ -122,7 +122,7 @@ void motor_right(uint8_t duration) {  // 0 Degree Turn
     // SET MOTOR STATE TO ON
     gpio_put(MOTOR2_ENABLE_PIN, true);
     gpio_put(MOTOR1_ENABLE_PIN, true);
-    sleep_ms(duration * 1000);
+    sleep_ms(900);
 }
 
 void motor_left(uint8_t duration) {  // 0 Degree Turn
@@ -134,7 +134,7 @@ void motor_left(uint8_t duration) {  // 0 Degree Turn
     // SET MOTOR STATE TO ON
     gpio_put(MOTOR2_ENABLE_PIN, true);
     gpio_put(MOTOR1_ENABLE_PIN, true);
-    sleep_ms(duration * 1000);
+    sleep_ms(900);
 }
 
 // void motor_reverse() {
