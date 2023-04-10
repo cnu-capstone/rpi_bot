@@ -63,7 +63,7 @@ int main() {
 	tty.c_cc[VTIME] = 10;    // Wait for up to 1s (10 deciseconds), returning as soon as any data is received.
 	tty.c_cc[VMIN] = 0;
 
-	// Set in/out baud rate to be 9600
+	// Set in/out baud rate to be 115200
 	cfsetispeed(&tty, UART_BAUDR);
 	cfsetospeed(&tty, UART_BAUDR);
 	
@@ -84,6 +84,8 @@ int main() {
 
 	// AWS dropbox file
 	std::string filepath = "/home/pi/Desktop/AWS/location.txt";
+	
+	// FileIO fio(filepath);
 	
 	while (1) {
 		// std::cout<<"Please enter command: ";
