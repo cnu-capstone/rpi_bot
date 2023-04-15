@@ -1,21 +1,4 @@
-// #include <stdio.h>
-// #include "pico/stdlib.h"
-// #include "hardware/gpio.h"
-// #include "hardware/timer.h"
 #include "../includes/ultrasonic.h"
-
-// Move definitions to header file in includes/ultrasonic.h
-// #define SUCCESS 0
-// #define TRIGGER_PIN_LEFT 2  // GPIO pin number for trigger
-// #define ECHO_PIN_LEFT 3   // GPIO pin number for echo
-
-// #define TRIGGER_PIN_RIGHT 0  // GPIO pin number for trigger
-// #define ECHO_PIN_RIGHT 1    // GPIO pin number for echo
-
-// #define TRIGGER_PIN_FORWARD_A 4  // GPIO pin number for trigger
-// #define ECHO_PIN_FORWARD_A 5   // GPIO pin number for echo
-// #define TRIGGER_PIN_FORWARD_B 6  // GPIO pin number for trigger
-// #define ECHO_PIN_FORWARD_B 7   // GPIO pin number for echo
 
 volatile uint32_t start_time_LEFT = 0;
 volatile uint32_t end_time_LEFT = 0;
@@ -201,21 +184,3 @@ float ultrasonic_forward_b() {
 	
     return distance_cm_FORWARD_B;
 }
-
-// int main() {
-// 	stdio_init_all();
- 
-//     int count =0;
-//     float total =0;
-// 	while (1) {
-//         printf(" ");
-//         count= count+1;
-//         ultrasonic_forward_a();
-//         ultrasonic_forward_b();
-      
-//         printf("count: %d", count);
-//         sleep_ms(100);
-     
-//     }
-// 	return SUCCESS;
-// }
