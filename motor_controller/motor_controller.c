@@ -1,17 +1,4 @@
-// #include <stdio.h>  // COMM STUFF
-// #include <math.h>  // For POW function
-// #include "pico/stdlib.h"
-// #include "../includes/constants.h"
-// #include "../includes/ultrasonic.h"
 #include "../includes/motor_controller.h"
-
-// #ifndef bit_width
-// #define bit_width 3
-// #endif
-
-// #ifndef CMD_LEN
-// #define CMD_LEN 8
-// #endif
 
 bool INSTRUCTIONS[bit_width] = {false, false, false};  // Enable, A, B
 const uint MOTOR1_ENABLE_PIN = 18;  // Right Motor
