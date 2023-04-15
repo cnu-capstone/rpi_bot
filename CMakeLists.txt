@@ -18,8 +18,6 @@ project(motor_controller C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-# include_directories("includes")
-
 # initialize the Raspberry Pi Pico SDK
 pico_sdk_init()
 
@@ -48,12 +46,6 @@ pico_enable_stdio_uart(${PROJECT_NAME} 0)
 pico_add_extra_outputs(${PROJECT_NAME})
 
 # pull in common dependencies
-# target_include_directories(${PROJECT_NAME} PUBLIC includes/ultrasonic.h)
-# include_directories(
-#         includes/
-# )
-# target_include_directories(${PROJECT_NAME} includes)
-# target_link_directories(${PROJECT_NAME} includes)
 # target_link_libraries(${PROJECT_NAME} pico_stdlib)
 # target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_i2c)
 target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_gpio hardware_pwm hardware_timer)
