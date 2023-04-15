@@ -74,21 +74,6 @@ void pico_deinit() {
     gpio_deinit(LED_PIN);
 }
 
-// void motor_forward(int duty_cycle) {  // With DUTY CYCLE
-//     // SET MOTOR DIRECTION FORWARD
-//     gpio_put(MOTOR1_POS_PIN, true);
-//     gpio_put(MOTOR2_POS_PIN, true);
-//     // SET DUTY CYCLE
-//     gpio_put(MOTOR1_ENABLE_PIN, true);
-//     gpio_put(MOTOR2_ENABLE_PIN, true);
-//     sleep_ms(duty_cycle);
-//     if (duty_cycle > 0) {
-//         gpio_put(MOTOR1_ENABLE_PIN, false);
-//         gpio_put(MOTOR2_ENABLE_PIN, false);
-//         sleep_ms(100-duty_cycle);
-//     }
-// }
-
 void motor_forward(uint8_t duration) {
     // SET MOTOR DIRECTION FORWARD
     gpio_put(MOTOR1_POS_PIN, true);
@@ -137,12 +122,6 @@ void motor_left(uint8_t duration) {  // 0 Degree Turn
     sleep_ms(900);
 }
 
-// void motor_reverse() {
-//     sleep_ms(100);
-//     gpio_put(MOTOR_POS_PIN, false);
-//     gpio_put(MOTOR_NEG_PIN, true);
-// }
-
 void motor_stall() {
     gpio_put(MOTOR1_ENABLE_PIN, false);
     gpio_put(MOTOR2_ENABLE_PIN, false);
@@ -159,10 +138,6 @@ int main() {
         read_stream(cmd);
 
         for (int i = 0; i < bit_width; i ++) {
-            // printf(" CMD at %i is %c", i, cmd[i]);
-            // if (cmd[i] == '1') {
-                // INSTRUCTIONS[i] = true;
-            // }
             INSTRUCTIONS[i] = cmd[i] == '1';
         }
 
@@ -177,15 +152,12 @@ int main() {
         }
 
         if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 111
-            // printf("Forward");
             motor_forward(cmd_duration);
         }
         else if (INSTRUCTIONS[0] && !INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 101
-            // printf("Left");
             motor_left(cmd_duration);
         }
         else if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && !INSTRUCTIONS[2]) {  // 110
-            // printf("Right");
             motor_right(cmd_duration);
         }
         else if (!INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 011
@@ -194,14 +166,6 @@ int main() {
         else {
             motor_stall();
         }
-        // gpio_put(LED_PIN, true);
-        // Drive
-        // motor_forward(100);
-        // motor_forward(50);
-        // motor_forward(25);
-        // Stall
-        // gpio_put(LED_PIN, false);
-        // motor_stall();
         motor_stall();
     }
 
