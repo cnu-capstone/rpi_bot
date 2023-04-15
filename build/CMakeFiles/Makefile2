@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/pi/Documents/rpi_bot/build
 
 # The main recursive "all" target.
 all: CMakeFiles/ELF2UF2Build.dir/all
-all: CMakeFiles/ultrasonic.dir/all
+all: CMakeFiles/rotary_encoder.dir/all
 all: pico-sdk/all
 
 .PHONY : all
@@ -66,7 +66,7 @@ preinstall: pico-sdk/preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/ELF2UF2Build.dir/clean
-clean: CMakeFiles/ultrasonic.dir/clean
+clean: CMakeFiles/rotary_encoder.dir/clean
 clean: pico-sdk/clean
 
 .PHONY : clean
@@ -1615,32 +1615,32 @@ CMakeFiles/ELF2UF2Build.dir/clean:
 .PHONY : CMakeFiles/ELF2UF2Build.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/ultrasonic.dir
+# Target rules for target CMakeFiles/rotary_encoder.dir
 
 # All Build rule for target.
-CMakeFiles/ultrasonic.dir/all: CMakeFiles/ELF2UF2Build.dir/all
-CMakeFiles/ultrasonic.dir/all: pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/all
-	$(MAKE) -f CMakeFiles/ultrasonic.dir/build.make CMakeFiles/ultrasonic.dir/depend
-	$(MAKE) -f CMakeFiles/ultrasonic.dir/build.make CMakeFiles/ultrasonic.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Documents/rpi_bot/build/CMakeFiles --progress-num=24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93 "Built target ultrasonic"
-.PHONY : CMakeFiles/ultrasonic.dir/all
+CMakeFiles/rotary_encoder.dir/all: CMakeFiles/ELF2UF2Build.dir/all
+CMakeFiles/rotary_encoder.dir/all: pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/all
+	$(MAKE) -f CMakeFiles/rotary_encoder.dir/build.make CMakeFiles/rotary_encoder.dir/depend
+	$(MAKE) -f CMakeFiles/rotary_encoder.dir/build.make CMakeFiles/rotary_encoder.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pi/Documents/rpi_bot/build/CMakeFiles --progress-num=24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93 "Built target rotary_encoder"
+.PHONY : CMakeFiles/rotary_encoder.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/ultrasonic.dir/rule: cmake_check_build_system
+CMakeFiles/rotary_encoder.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Documents/rpi_bot/build/CMakeFiles 82
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ultrasonic.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rotary_encoder.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/pi/Documents/rpi_bot/build/CMakeFiles 0
-.PHONY : CMakeFiles/ultrasonic.dir/rule
+.PHONY : CMakeFiles/rotary_encoder.dir/rule
 
 # Convenience name for target.
-ultrasonic: CMakeFiles/ultrasonic.dir/rule
+rotary_encoder: CMakeFiles/rotary_encoder.dir/rule
 
-.PHONY : ultrasonic
+.PHONY : rotary_encoder
 
 # clean rule for target.
-CMakeFiles/ultrasonic.dir/clean:
-	$(MAKE) -f CMakeFiles/ultrasonic.dir/build.make CMakeFiles/ultrasonic.dir/clean
-.PHONY : CMakeFiles/ultrasonic.dir/clean
+CMakeFiles/rotary_encoder.dir/clean:
+	$(MAKE) -f CMakeFiles/rotary_encoder.dir/build.make CMakeFiles/rotary_encoder.dir/clean
+.PHONY : CMakeFiles/rotary_encoder.dir/clean
 
 #=============================================================================
 # Target rules for target pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default.dir

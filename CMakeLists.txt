@@ -17,7 +17,8 @@ set(PICO_BOARD pico)
 # project(motor_controller C CXX ASM)
 # project(i2c_slave C CXX ASM)
 # project(usb_comm C CXX ASM)
-project(ultrasonic C CXX ASM)
+# project(ultrasonic C CXX ASM)
+ project(rotary_encoder C CXX ASM)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -54,8 +55,11 @@ pico_sdk_init()
 #         usb_comm/usb_comm.c
 #         )
 
+# add_executable(${PROJECT_NAME}
+#        ultrasonic_usb_comm/ultrasonic.c
+#        )
 add_executable(${PROJECT_NAME}
-        ultrasonic_usb_comm/ultrasonic.c
+        rotary_ecoder_usb_comm/rotary_encoder.c
         )
 
 pico_enable_stdio_usb(${PROJECT_NAME} 1)
@@ -65,6 +69,6 @@ pico_enable_stdio_uart(${PROJECT_NAME} 0)
 pico_add_extra_outputs(${PROJECT_NAME})
 
 # pull in common dependencies
-target_link_libraries(${PROJECT_NAME} pico_stdlib)
+# target_link_libraries(${PROJECT_NAME} pico_stdlib)
 # target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_i2c)
-# target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_gpio hardware_pwm)
+target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_gpio hardware_pwm hardware_timer)

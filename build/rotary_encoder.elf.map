@@ -70,6 +70,10 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
  .data          0x00000000        0x0 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
  .bss           0x00000000        0x0 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
+ .text.encoder_left
+                0x00000000       0x58 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
+ .text.encoder_right
+                0x00000000       0x58 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
  .text          0x00000000        0x0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
  .data          0x00000000        0x0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
  .bss           0x00000000        0x0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
@@ -1098,9 +1102,9 @@ Discarded input sections
                 0x00000000       0x7c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
  .time_critical.flash_range_program
                 0x00000000       0x80 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
- .text          0x00000000        0x0 /tmp/ccK1qNIR.o
- .data          0x00000000        0x0 /tmp/ccK1qNIR.o
- .bss           0x00000000        0x0 /tmp/ccK1qNIR.o
+ .text          0x00000000        0x0 /tmp/ccu7KkG7.o
+ .data          0x00000000        0x0 /tmp/ccu7KkG7.o
+ .bss           0x00000000        0x0 /tmp/ccu7KkG7.o
  .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/libgcc.a(_dvmd_tls.o)
  .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/libgcc.a(_dvmd_tls.o)
  .text          0x00000000       0x10 /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/libc.a(lib_a-atexit.o)
@@ -1364,11 +1368,11 @@ LOAD /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/crt0
 .boot2          0x10000000      0x100
                 0x10000000                __boot2_start__ = .
  *(.boot2)
- .boot2         0x10000000      0x100 /tmp/ccK1qNIR.o
+ .boot2         0x10000000      0x100 /tmp/ccu7KkG7.o
                 0x10000100                __boot2_end__ = .
                 0x00000001                ASSERT (((__boot2_end__ - __boot2_start__) == 0x100), ERROR: Pico second stage bootloader must be 256 bytes in size)
 
-.text           0x10000100     0x8830
+.text           0x10000100     0x88e0
                 0x10000100                __logical_binary_start = .
  *(.vectors)
  .vectors       0x10000100       0xd4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
@@ -1431,568 +1435,570 @@ LOAD /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/crt0
  *(EXCLUDE_FILE(*libm.a: *libc.a:*lib_a-mem*.o *libgcc.a:) .text*)
  .text          0x100002c4       0x98 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtbegin.o
  .text.encoder_isr_A
-                0x1000035c       0x30 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
+                0x1000035c       0x38 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
                 0x1000035c                encoder_isr_A
+ .text.encoder_isr_A_RIGHT
+                0x10000394       0x38 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
+                0x10000394                encoder_isr_A_RIGHT
  .text.startup.main
-                0x1000038c       0x64 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
-                0x1000038c                main
+                0x100003cc       0xd8 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
+                0x100003cc                main
  .text.gpio_default_irq_handler
-                0x100003f0      0x24c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+                0x100004a4      0x24c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
  .text.gpio_set_pulls
-                0x1000063c       0x34 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
-                0x1000063c                gpio_set_pulls
+                0x100006f0       0x34 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+                0x100006f0                gpio_set_pulls
  .text.gpio_set_irq_enabled_with_callback
-                0x10000670       0xa8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
-                0x10000670                gpio_set_irq_enabled_with_callback
+                0x10000724       0xa8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+                0x10000724                gpio_set_irq_enabled_with_callback
  .text.gpio_init
-                0x10000718       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
-                0x10000718                gpio_init
+                0x100007cc       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+                0x100007cc                gpio_init
  .text.hw_claim_or_assert
-                0x10000754       0x44 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
-                0x10000754                hw_claim_or_assert
+                0x10000808       0x44 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
+                0x10000808                hw_claim_or_assert
  .text.hw_claim_unused_from_range
-                0x10000798       0x9c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
-                0x10000798                hw_claim_unused_from_range
+                0x1000084c       0x9c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
+                0x1000084c                hw_claim_unused_from_range
  .text.running_on_fpga
-                0x10000834       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
-                0x10000834                running_on_fpga
+                0x100008e8       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
+                0x100008e8                running_on_fpga
  .text.spin_locks_reset
-                0x10000844       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
-                0x10000844                spin_locks_reset
+                0x100008f8       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+                0x100008f8                spin_locks_reset
  .text.next_striped_spin_lock_num
-                0x10000860       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
-                0x10000860                next_striped_spin_lock_num
+                0x10000914       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+                0x10000914                next_striped_spin_lock_num
  .text.spin_lock_claim_unused
-                0x10000878       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
-                0x10000878                spin_lock_claim_unused
+                0x1000092c       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+                0x1000092c                spin_lock_claim_unused
  .text.irq_set_enabled
-                0x10000898       0x24 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x10000898                irq_set_enabled
+                0x1000094c       0x24 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x1000094c                irq_set_enabled
  .text.irq_set_pending
-                0x100008bc       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x100008bc                irq_set_pending
+                0x10000970       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x10000970                irq_set_pending
  .text.irq_has_shared_handler
-                0x100008cc       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x100008cc                irq_has_shared_handler
+                0x10000980       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x10000980                irq_has_shared_handler
  .text.irq_get_vtable_handler
-                0x100008f8       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x100008f8                irq_get_vtable_handler
+                0x100009ac       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x100009ac                irq_get_vtable_handler
  .text.irq_set_exclusive_handler
-                0x10000908       0x54 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x10000908                irq_set_exclusive_handler
+                0x100009bc       0x54 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x100009bc                irq_set_exclusive_handler
  .text.irq_add_shared_handler
-                0x1000095c      0x1c8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x1000095c                irq_add_shared_handler
+                0x10000a10      0x1c8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x10000a10                irq_add_shared_handler
  .text.irq_remove_handler
-                0x10000b24      0x1b4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x10000b24                irq_remove_handler
+                0x10000bd8      0x1b4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x10000bd8                irq_remove_handler
  .text.irq_add_tail_to_free_list
-                0x10000cd8       0xb4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x10000cd8                irq_add_tail_to_free_list
+                0x10000d8c       0xb4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x10000d8c                irq_add_tail_to_free_list
  .text.irq_init_priorities
-                0x10000d8c       0x24 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x10000d8c                irq_init_priorities
+                0x10000e40       0x24 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x10000e40                irq_init_priorities
  .text.user_irq_claim_unused
-                0x10000db0       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
-                0x10000db0                user_irq_claim_unused
+                0x10000e64       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x10000e64                user_irq_claim_unused
  .text.lock_init
-                0x10000de0       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_sync/lock_core.c.obj
-                0x10000de0                lock_init
+                0x10000e94       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_sync/lock_core.c.obj
+                0x10000e94                lock_init
  .text.timer_pool_entry_comparator
-                0x10000df0       0x34 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
-                0x10000df0                timer_pool_entry_comparator
+                0x10000ea4       0x34 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x10000ea4                timer_pool_entry_comparator
  .text.sleep_until_callback
-                0x10000e24       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x10000ed8       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
  .text.add_alarm_under_lock
-                0x10000e54      0x120 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x10000f08      0x120 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
  .text.alarm_pool_alarm_callback
-                0x10000f74      0x1dc CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x10001028      0x1dc CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
  .text.alarm_pool_init_default
-                0x10001150       0x64 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
-                0x10001150                alarm_pool_init_default
+                0x10001204       0x64 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x10001204                alarm_pool_init_default
  .text.alarm_pool_get_default
-                0x100011b4        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
-                0x100011b4                alarm_pool_get_default
+                0x10001268        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x10001268                alarm_pool_get_default
  .text.alarm_pool_add_alarm_at
-                0x100011bc      0x1ac CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
-                0x100011bc                alarm_pool_add_alarm_at
+                0x10001270      0x1ac CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x10001270                alarm_pool_add_alarm_at
  .text.sleep_until
-                0x10001368      0x1ec CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
-                0x10001368                sleep_until
+                0x1000141c      0x1ec CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x1000141c                sleep_until
  .text.sleep_ms
-                0x10001554       0x38 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
-                0x10001554                sleep_ms
+                0x10001608       0x38 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x10001608                sleep_ms
  .text.best_effort_wfe_or_timeout
-                0x1000158c      0x1b4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
-                0x1000158c                best_effort_wfe_or_timeout
+                0x10001640      0x1b4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x10001640                best_effort_wfe_or_timeout
  .text.hardware_alarm_irq_handler
-                0x10001740       0xb0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x100017f4       0xb0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
  .text.hardware_alarm_claim
-                0x100017f0       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
-                0x100017f0                hardware_alarm_claim
+                0x100018a4       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x100018a4                hardware_alarm_claim
  .text.time_us_64
-                0x10001808       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
-                0x10001808                time_us_64
+                0x100018bc       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x100018bc                time_us_64
  .text.busy_wait_until
-                0x10001820       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
-                0x10001820                busy_wait_until
+                0x100018d4       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x100018d4                busy_wait_until
  .text.hardware_alarm_set_callback
-                0x10001840       0x8c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
-                0x10001840                hardware_alarm_set_callback
+                0x100018f4       0x8c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x100018f4                hardware_alarm_set_callback
  .text.hardware_alarm_set_target
-                0x100018cc       0xd8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
-                0x100018cc                hardware_alarm_set_target
+                0x10001980       0xd8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x10001980                hardware_alarm_set_target
  .text.hardware_alarm_cancel
-                0x100019a4       0x40 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
-                0x100019a4                hardware_alarm_cancel
+                0x10001a58       0x40 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x10001a58                hardware_alarm_cancel
  .text.ph_merge_two_pass.part.3
-                0x100019e4       0xcc CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_util/pheap.c.obj
+                0x10001a98       0xcc CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_util/pheap.c.obj
  .text.ph_post_alloc_init
-                0x10001ab0       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_util/pheap.c.obj
-                0x10001ab0                ph_post_alloc_init
+                0x10001b64       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_util/pheap.c.obj
+                0x10001b64                ph_post_alloc_init
  .text.ph_remove_head
-                0x10001aec      0x158 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_util/pheap.c.obj
-                0x10001aec                ph_remove_head
+                0x10001ba0      0x158 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_util/pheap.c.obj
+                0x10001ba0                ph_remove_head
  .text.ph_remove_and_free_node
-                0x10001c44      0x340 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_util/pheap.c.obj
-                0x10001c44                ph_remove_and_free_node
+                0x10001cf8      0x340 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_util/pheap.c.obj
+                0x10001cf8                ph_remove_and_free_node
  .text.mutex_init
-                0x10001f84       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_sync/mutex.c.obj
-                0x10001f84                mutex_init
+                0x10002038       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_sync/mutex.c.obj
+                0x10002038                mutex_init
  .text.recursive_mutex_init
-                0x10001fa0       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_sync/mutex.c.obj
-                0x10001fa0                recursive_mutex_init
+                0x10002054       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_sync/mutex.c.obj
+                0x10002054                recursive_mutex_init
  .text.critical_section_init
-                0x10001fbc       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_sync/critical_section.c.obj
-                0x10001fbc                critical_section_init
+                0x10002070       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_sync/critical_section.c.obj
+                0x10002070                critical_section_init
  .text.runtime_init
-                0x10001fdc       0xf4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
-                0x10001fdc                runtime_init
- .text.exit     0x100020d0        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
-                0x100020d0                exit
- .text.panic    0x100020d4       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
-                0x100020d4                panic
+                0x10002090       0xf4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+                0x10002090                runtime_init
+ .text.exit     0x10002184        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+                0x10002184                exit
+ .text.panic    0x10002188       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+                0x10002188                panic
  .text.hard_assertion_failure
-                0x10002104        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
-                0x10002104                hard_assertion_failure
+                0x100021b8        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+                0x100021b8                hard_assertion_failure
  .text.clocks_init
-                0x10002110      0x2c8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
-                0x10002110                clocks_init
+                0x100021c4      0x2c8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+                0x100021c4                clocks_init
  .text.pll_init
-                0x100023d8       0xa8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
-                0x100023d8                pll_init
+                0x1000248c       0xa8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+                0x1000248c                pll_init
  .text.watchdog_start_tick
-                0x10002480       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
-                0x10002480                watchdog_start_tick
+                0x10002534       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+                0x10002534                watchdog_start_tick
  .text.watchdog_reboot
-                0x10002490       0x98 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
-                0x10002490                watchdog_reboot
+                0x10002544       0x98 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+                0x10002544                watchdog_reboot
  .text.xosc_init
-                0x10002528       0x28 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
-                0x10002528                xosc_init
+                0x100025dc       0x28 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+                0x100025dc                xosc_init
  .text._out_null
-                0x10002550        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10002604        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .text._out_fct
-                0x10002554       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10002608       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .text._out_char
-                0x10002564        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10002618        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .text._ntoa_format
-                0x10002570      0x270 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10002624      0x270 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .text._etoa.part.0
-                0x100027e0      0x56c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
- .text._ftoa    0x10002d4c      0x6f8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10002894      0x56c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+ .text._ftoa    0x10002e00      0x6f8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .text._ftoa.part.1
-                0x10003444      0x54c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x100034f8      0x54c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .text._vsnprintf
-                0x10003990     0x11e0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10003a44     0x11e0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .text.vfctprintf
-                0x10004b70       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
-                0x10004b70                vfctprintf
+                0x10004c24       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10004c24                vfctprintf
  .text.weak_raw_vprintf
-                0x10004b90       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
-                0x10004b90                weak_raw_vprintf
- .text          0x10004bc0       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+                0x10004c44       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10004c44                weak_raw_vprintf
+ .text          0x10004c74       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
  .text.rom_func_lookup
-                0x10004bd0       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
-                0x10004bd0                rom_func_lookup
+                0x10004c84       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+                0x10004c84                rom_func_lookup
  .text.rom_data_lookup
-                0x10004be0       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
-                0x10004be0                rom_data_lookup
+                0x10004c94       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+                0x10004c94                rom_data_lookup
  .text.rom_funcs_lookup
-                0x10004bf0       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
-                0x10004bf0                rom_funcs_lookup
+                0x10004ca4       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+                0x10004ca4                rom_funcs_lookup
  .text.__wrap___aeabi_idiv
-                0x10004c2c       0x50 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
-                0x10004c2c                __wrap___aeabi_idivmod
-                0x10004c2c                divmod_s32s32
-                0x10004c2c                div_s32s32
-                0x10004c2c                __wrap___aeabi_idiv
-                0x10004c34                divmod_s32s32_unsafe
-                0x10004c60                divmod_s32s32_savestate
+                0x10004ce0       0x50 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+                0x10004ce0                __wrap___aeabi_idivmod
+                0x10004ce0                divmod_s32s32
+                0x10004ce0                div_s32s32
+                0x10004ce0                __wrap___aeabi_idiv
+                0x10004ce8                divmod_s32s32_unsafe
+                0x10004d14                divmod_s32s32_savestate
  .text.__wrap___aeabi_uidiv
-                0x10004c7c       0x4c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
-                0x10004c7c                __wrap___aeabi_uidiv
-                0x10004c7c                __wrap___aeabi_uidivmod
-                0x10004c7c                div_u32u32
-                0x10004c7c                divmod_u32u32
-                0x10004c84                divmod_u32u32_unsafe
-                0x10004cac                divmod_u32u32_savestate
+                0x10004d30       0x4c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+                0x10004d30                __wrap___aeabi_uidiv
+                0x10004d30                __wrap___aeabi_uidivmod
+                0x10004d30                div_u32u32
+                0x10004d30                divmod_u32u32
+                0x10004d38                divmod_u32u32_unsafe
+                0x10004d60                divmod_u32u32_savestate
  .text.__wrap___aeabi_ldiv
-                0x10004cc8      0x434 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
-                0x10004cc8                div_s64s64
-                0x10004cc8                divmod_s64s64
-                0x10004cc8                __wrap___aeabi_ldivmod
-                0x10004d00                div_u64u64
-                0x10004d00                divmod_u64u64
-                0x10004d00                __wrap___aeabi_uldivmod
-                0x10004d10                divmod_u64u64_savestate
-                0x10004d38                divmod_s64s64_unsafe
-                0x10004dc0                divmod_u64u64_unsafe
+                0x10004d7c      0x434 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+                0x10004d7c                div_s64s64
+                0x10004d7c                divmod_s64s64
+                0x10004d7c                __wrap___aeabi_ldivmod
+                0x10004db4                div_u64u64
+                0x10004db4                divmod_u64u64
+                0x10004db4                __wrap___aeabi_uldivmod
+                0x10004dc4                divmod_u64u64_savestate
+                0x10004dec                divmod_s64s64_unsafe
+                0x10004e74                divmod_u64u64_unsafe
  .text.__wrap___aeabi_darithmetic
-                0x100050fc       0x80 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-                0x100050fc                __wrap___aeabi_drsub
-                0x10005102                __wrap___aeabi_dsub
-                0x10005114                __wrap___aeabi_dadd
-                0x10005126                __wrap___aeabi_ddiv
-                0x10005162                __wrap___aeabi_dmul
+                0x100051b0       0x80 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x100051b0                __wrap___aeabi_drsub
+                0x100051b6                __wrap___aeabi_dsub
+                0x100051c8                __wrap___aeabi_dadd
+                0x100051da                __wrap___aeabi_ddiv
+                0x10005216                __wrap___aeabi_dmul
  .text.__wrap___aeabi_cdcmple
-                0x1000517c       0x6c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-                0x1000517c                __wrap___aeabi_cdrcmple
-                0x1000518c                __wrap___aeabi_cdcmple
-                0x1000518c                __wrap___aeabi_cdcmpeq
+                0x10005230       0x6c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x10005230                __wrap___aeabi_cdrcmple
+                0x10005240                __wrap___aeabi_cdcmple
+                0x10005240                __wrap___aeabi_cdcmpeq
  .text.__wrap___aeabi_dcmplt
-                0x100051e8        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-                0x100051e8                __wrap___aeabi_dcmplt
+                0x1000529c        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x1000529c                __wrap___aeabi_dcmplt
  .text.__wrap___aeabi_dcmpge
-                0x100051f4       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-                0x100051f4                __wrap___aeabi_dcmpge
+                0x100052a8       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x100052a8                __wrap___aeabi_dcmpge
  .text.__wrap___aeabi_dcmpgt
-                0x10005204        0xa CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-                0x10005204                __wrap___aeabi_dcmpgt
+                0x100052b8        0xa CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x100052b8                __wrap___aeabi_dcmpgt
  .text.__wrap___aeabi_dcmpun
-                0x1000520e       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-                0x1000520e                __wrap___aeabi_dcmpun
- *fill*         0x1000522a        0x2 
+                0x100052c2       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x100052c2                __wrap___aeabi_dcmpun
+ *fill*         0x100052de        0x2 
  .text.__wrap___aeabi_i2d
-                0x1000522c       0x38 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-                0x1000522c                __wrap___aeabi_ui2d
-                0x10005234                __wrap___aeabi_i2d
+                0x100052e0       0x38 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x100052e0                __wrap___aeabi_ui2d
+                0x100052e8                __wrap___aeabi_i2d
  .text.__wrap___aeabi_d2iz
-                0x10005264       0x48 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-                0x10005264                __wrap___aeabi_d2iz
-                0x10005264                double2int_z
+                0x10005318       0x48 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x10005318                __wrap___aeabi_d2iz
+                0x10005318                double2int_z
  .text.__wrap___aeabi_d2uiz
-                0x100052ac       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
-                0x100052ac                double2uint
-                0x100052ac                __wrap___aeabi_d2uiz
+                0x10005360       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+                0x10005360                double2uint
+                0x10005360                __wrap___aeabi_d2uiz
  .text.__aeabi_double_init
-                0x100052c4       0x60 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
-                0x100052c4                __aeabi_double_init
+                0x10005378       0x60 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+                0x10005378                __aeabi_double_init
  .text.double_table_shim_on_use_helper
-                0x10005324       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
-                0x10005324                double_table_shim_on_use_helper
+                0x100053d8       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+                0x100053d8                double_table_shim_on_use_helper
  .text.__wrap___aeabi_dsub
-                0x10005350       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
-                0x10005350                drsub_shim
-                0x10005356                dsub_shim
+                0x10005404       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+                0x10005404                drsub_shim
+                0x1000540a                dsub_shim
  .text.dadd_shim
-                0x10005360      0x15c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
-                0x10005360                dadd_shim
+                0x10005414      0x15c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+                0x10005414                dadd_shim
  .text.dmul_shim
-                0x100054bc      0x15c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
-                0x100054bc                dmul_shim
+                0x10005570      0x15c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+                0x10005570                dmul_shim
  .text.ddiv_shim
-                0x10005618      0x1b0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
-                0x10005618                ddiv_shim
+                0x100056cc      0x1b0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+                0x100056cc                ddiv_shim
  .text.double2uint_shim
-                0x100057c8        0xe CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
-                0x100057c8                double2uint_shim
-                0x100057ca                double2ufix_shim
- *fill*         0x100057d6        0x2 
+                0x1000587c        0xe CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+                0x1000587c                double2uint_shim
+                0x1000587e                double2ufix_shim
+ *fill*         0x1000588a        0x2 
  .text.double2uint64_shim
-                0x100057d8       0x70 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
-                0x100057d8                double2uint64_shim
-                0x100057da                double2ufix64_shim
-                0x100057fa                d2fix_a
+                0x1000588c       0x70 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+                0x1000588c                double2uint64_shim
+                0x1000588e                double2ufix64_shim
+                0x100058ae                d2fix_a
  .text.dunpacks
-                0x10005848       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
-                0x10005848                dunpacks
+                0x100058fc       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+                0x100058fc                dunpacks
  .text.__aeabi_lmul
-                0x10005884       0x32 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
-                0x10005884                __wrap___aeabi_lmul
- *fill*         0x100058b6        0x2 
+                0x10005938       0x32 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+                0x10005938                __wrap___aeabi_lmul
+ *fill*         0x1000596a        0x2 
  .text.__aeabi_float_init
-                0x100058b8       0x68 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
-                0x100058b8                __aeabi_float_init
+                0x1000596c       0x68 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+                0x1000596c                __aeabi_float_init
  .text.float_table_shim_on_use_helper
-                0x10005920       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
-                0x10005920                float_table_shim_on_use_helper
- .text          0x1000594c       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
-                0x1000594c                __aeabi_mem_init
- .text.memset   0x1000595c        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
-                0x1000595c                __wrap_memset
- .text.memcpy   0x10005968        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
-                0x10005968                __wrap___aeabi_memcpy
-                0x10005968                __wrap_memcpy
+                0x100059d4       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
+                0x100059d4                float_table_shim_on_use_helper
+ .text          0x10005a00       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+                0x10005a00                __aeabi_mem_init
+ .text.memset   0x10005a10        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+                0x10005a10                __wrap_memset
+ .text.memcpy   0x10005a1c        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+                0x10005a1c                __wrap___aeabi_memcpy
+                0x10005a1c                __wrap_memcpy
  .text.stdio_out_chars_crlf
-                0x10005974       0x9c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x10005a28       0x9c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
  .text.stdio_stack_buffer_flush.part.1
-                0x10005a10       0xdc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x10005ac4       0xdc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
  .text.stdio_buffered_printer
-                0x10005aec       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x10005ba0       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
  .text.__wrap_putchar
-                0x10005b0c       0xa0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
-                0x10005b0c                __wrap_putchar
+                0x10005bc0       0xa0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x10005bc0                __wrap_putchar
  .text.__wrap_puts
-                0x10005bac       0xe8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
-                0x10005bac                __wrap_puts
+                0x10005c60       0xe8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x10005c60                __wrap_puts
  .text.stdio_set_driver_enabled
-                0x10005c94       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
-                0x10005c94                stdio_set_driver_enabled
+                0x10005d48       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x10005d48                stdio_set_driver_enabled
  .text.__wrap_vprintf
-                0x10005cc4       0x94 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
-                0x10005cc4                __wrap_vprintf
+                0x10005d78       0x94 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x10005d78                __wrap_vprintf
  .text.__wrap_printf
-                0x10005d58       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
-                0x10005d58                __wrap_printf
+                0x10005e0c       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x10005e0c                __wrap_printf
  .text.stdio_init_all
-                0x10005d70        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
-                0x10005d70                stdio_init_all
+                0x10005e24        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x10005e24                stdio_init_all
  .text.resetd_init
-                0x10005d78        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x10005e2c        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
  .text.resetd_reset
-                0x10005d7c        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x10005e30        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
  .text.resetd_xfer_cb
-                0x10005d88        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x10005e3c        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
  .text.resetd_open
-                0x10005d8c       0x28 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x10005e40       0x28 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
  .text.resetd_control_xfer_cb
-                0x10005db4       0x64 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x10005e68       0x64 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
  .text.usbd_app_driver_get_cb
-                0x10005e18        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
-                0x10005e18                usbd_app_driver_get_cb
+                0x10005ecc        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x10005ecc                usbd_app_driver_get_cb
  .text.tud_cdc_line_coding_cb
-                0x10005e24       0x34 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
-                0x10005e24                tud_cdc_line_coding_cb
+                0x10005ed8       0x34 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x10005ed8                tud_cdc_line_coding_cb
  .text.stdio_usb_in_chars
-                0x10005e58       0x68 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
-                0x10005e58                stdio_usb_in_chars
+                0x10005f0c       0x68 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x10005f0c                stdio_usb_in_chars
  .text.timer_task
-                0x10005ec0       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
- .text.usb_irq  0x10005ed8       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x10005f74       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+ .text.usb_irq  0x10005f8c       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
  .text.low_priority_worker_irq
-                0x10005ee8       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x10005f9c       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
  .text.stdio_usb_out_chars
-                0x10005f08       0xf0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x10005fbc       0xf0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
  .text.stdio_usb_init
-                0x10005ff8       0xb0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
-                0x10005ff8                stdio_usb_init
+                0x100060ac       0xb0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x100060ac                stdio_usb_init
  .text.tud_descriptor_device_cb
-                0x100060a8        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
-                0x100060a8                tud_descriptor_device_cb
+                0x1000615c        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+                0x1000615c                tud_descriptor_device_cb
  .text.tud_descriptor_configuration_cb
-                0x100060b0        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
-                0x100060b0                tud_descriptor_configuration_cb
+                0x10006164        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+                0x10006164                tud_descriptor_configuration_cb
  .text.tud_descriptor_string_cb
-                0x100060b8       0x70 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
-                0x100060b8                tud_descriptor_string_cb
+                0x1000616c       0x70 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+                0x1000616c                tud_descriptor_string_cb
  .text.dcd_rp2040_irq
-                0x10006128      0x21c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x100061dc      0x21c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
  .text.dcd_int_enable
-                0x10006344        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x10006344                dcd_int_enable
+                0x100063f8        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x100063f8                dcd_int_enable
  .text.dcd_set_address
-                0x10006350       0x14 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x10006350                dcd_set_address
+                0x10006404       0x14 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x10006404                dcd_set_address
  .text.dcd_connect
-                0x10006364       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x10006364                dcd_connect
+                0x10006418       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x10006418                dcd_connect
  .text.dcd_init
-                0x10006374      0x144 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x10006374                dcd_init
+                0x10006428      0x144 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x10006428                dcd_init
  .text.dcd_edpt0_status_complete
-                0x100064b8       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x100064b8                dcd_edpt0_status_complete
+                0x1000656c       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x1000656c                dcd_edpt0_status_complete
  .text.dcd_edpt_open
-                0x100064d4       0xf0 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x100064d4                dcd_edpt_open
+                0x10006588       0xf0 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x10006588                dcd_edpt_open
  .text.dcd_edpt_close_all
-                0x100065c4       0xbc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x100065c4                dcd_edpt_close_all
+                0x10006678       0xbc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x10006678                dcd_edpt_close_all
  .text.dcd_edpt_xfer
-                0x10006680       0x24 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x10006680                dcd_edpt_xfer
+                0x10006734       0x24 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x10006734                dcd_edpt_xfer
  .text.dcd_edpt_stall
-                0x100066a4       0x34 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x100066a4                dcd_edpt_stall
+                0x10006758       0x34 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x10006758                dcd_edpt_stall
  .text.dcd_edpt_clear_stall
-                0x100066d8       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
-                0x100066d8                dcd_edpt_clear_stall
+                0x1000678c       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x1000678c                dcd_edpt_clear_stall
  .text.rp2040_usb_init
-                0x10006704       0x4c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
-                0x10006704                rp2040_usb_init
+                0x100067b8       0x4c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+                0x100067b8                rp2040_usb_init
  .text.hw_endpoint_reset_transfer
-                0x10006750        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
-                0x10006750                hw_endpoint_reset_transfer
+                0x10006804        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+                0x10006804                hw_endpoint_reset_transfer
  .text._hw_endpoint_buffer_control_update32
-                0x1000675c       0x58 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
-                0x1000675c                _hw_endpoint_buffer_control_update32
+                0x10006810       0x58 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+                0x10006810                _hw_endpoint_buffer_control_update32
  .text.hw_endpoint_xfer_start
-                0x100067b4      0x14c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
-                0x100067b4                hw_endpoint_xfer_start
+                0x10006868      0x14c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+                0x10006868                hw_endpoint_xfer_start
  .text.hw_endpoint_xfer_continue
-                0x10006900      0x200 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
-                0x10006900                hw_endpoint_xfer_continue
+                0x100069b4      0x200 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+                0x100069b4                hw_endpoint_xfer_continue
  .text.tud_mounted
-                0x10006b00       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10006b00                tud_mounted
+                0x10006bb4       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10006bb4                tud_mounted
  .text.tud_suspended
-                0x10006b10       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10006b10                tud_suspended
+                0x10006bc4       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10006bc4                tud_suspended
  .text.tud_inited
-                0x10006b20        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10006b20                tud_inited
+                0x10006bd4        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10006bd4                tud_inited
  .text.tud_init
-                0x10006b2c       0xdc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10006b2c                tud_init
+                0x10006be0       0xdc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10006be0                tud_init
  .text.tud_task
-                0x10006c08      0x938 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10006c08                tud_task
+                0x10006cbc      0x938 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10006cbc                tud_task
  .text.dcd_event_bus_signal
-                0x10007540      0x124 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10007540                dcd_event_bus_signal
+                0x100075f4      0x124 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x100075f4                dcd_event_bus_signal
  .text.dcd_event_bus_reset
-                0x10007664       0x58 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10007664                dcd_event_bus_reset
+                0x10007718       0x58 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10007718                dcd_event_bus_reset
  .text.dcd_event_setup_received
-                0x100076bc       0x50 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x100076bc                dcd_event_setup_received
+                0x10007770       0x50 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10007770                dcd_event_setup_received
  .text.dcd_event_xfer_complete
-                0x1000770c       0x68 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x1000770c                dcd_event_xfer_complete
+                0x100077c0       0x68 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x100077c0                dcd_event_xfer_complete
  .text.usbd_open_edpt_pair
-                0x10007774       0xa4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10007774                usbd_open_edpt_pair
+                0x10007828       0xa4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10007828                usbd_open_edpt_pair
  .text.usbd_edpt_open
-                0x10007818       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10007818                usbd_edpt_open
+                0x100078cc       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x100078cc                usbd_edpt_open
  .text.usbd_edpt_claim
-                0x10007848       0x5c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10007848                usbd_edpt_claim
+                0x100078fc       0x5c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x100078fc                usbd_edpt_claim
  .text.usbd_edpt_release
-                0x100078a4       0x4c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x100078a4                usbd_edpt_release
+                0x10007958       0x4c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10007958                usbd_edpt_release
  .text.usbd_edpt_xfer
-                0x100078f0       0x48 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x100078f0                usbd_edpt_xfer
+                0x100079a4       0x48 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x100079a4                usbd_edpt_xfer
  .text.tud_control_status
-                0x10007938       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
-                0x10007938                tud_control_status
+                0x100079ec       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+                0x100079ec                tud_control_status
  .text.tud_control_xfer
-                0x10007968       0xb4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
-                0x10007968                tud_control_xfer
+                0x10007a1c       0xb4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+                0x10007a1c                tud_control_xfer
  .text.usbd_control_reset
-                0x10007a1c       0x14 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
-                0x10007a1c                usbd_control_reset
+                0x10007ad0       0x14 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+                0x10007ad0                usbd_control_reset
  .text.usbd_control_set_complete_callback
-                0x10007a30        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
-                0x10007a30                usbd_control_set_complete_callback
+                0x10007ae4        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+                0x10007ae4                usbd_control_set_complete_callback
  .text.usbd_control_set_request
-                0x10007a3c       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
-                0x10007a3c                usbd_control_set_request
+                0x10007af0       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+                0x10007af0                usbd_control_set_request
  .text.usbd_control_xfer_cb
-                0x10007a58       0xfc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
-                0x10007a58                usbd_control_xfer_cb
+                0x10007b0c       0xfc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+                0x10007b0c                usbd_control_xfer_cb
  .text.tud_cdc_n_connected
-                0x10007b54       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007b54                tud_cdc_n_connected
+                0x10007c08       0x30 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007c08                tud_cdc_n_connected
  .text.tud_cdc_n_available
-                0x10007b84       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007b84                tud_cdc_n_available
+                0x10007c38       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007c38                tud_cdc_n_available
  .text.tud_cdc_n_read
-                0x10007ba0       0x70 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007ba0                tud_cdc_n_read
+                0x10007c54       0x70 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007c54                tud_cdc_n_read
  .text.tud_cdc_n_write
-                0x10007c10       0x90 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007c10                tud_cdc_n_write
+                0x10007cc4       0x90 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007cc4                tud_cdc_n_write
  .text.tud_cdc_n_write_flush
-                0x10007ca0       0x78 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007ca0                tud_cdc_n_write_flush
+                0x10007d54       0x78 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007d54                tud_cdc_n_write_flush
  .text.tud_cdc_n_write_available
-                0x10007d18       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007d18                tud_cdc_n_write_available
+                0x10007dcc       0x1c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007dcc                tud_cdc_n_write_available
  .text.cdcd_init
-                0x10007d34       0x7c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007d34                cdcd_init
+                0x10007de8       0x7c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007de8                cdcd_init
  .text.cdcd_reset
-                0x10007db0       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007db0                cdcd_reset
+                0x10007e64       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007e64                cdcd_reset
  .text.cdcd_open
-                0x10007ddc       0xe4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007ddc                cdcd_open
+                0x10007e90       0xe4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007e90                cdcd_open
  .text.cdcd_control_xfer_cb
-                0x10007ec0       0xe4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007ec0                cdcd_control_xfer_cb
+                0x10007f74       0xe4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10007f74                cdcd_control_xfer_cb
  .text.cdcd_xfer_cb
-                0x10007fa4      0x198 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
-                0x10007fa4                cdcd_xfer_cb
+                0x10008058      0x198 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x10008058                cdcd_xfer_cb
  .text.tusb_init
-                0x1000813c        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj
-                0x1000813c                tusb_init
+                0x100081f0        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj
+                0x100081f0                tusb_init
  .text.tusb_inited
-                0x10008148        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj
-                0x10008148                tusb_inited
+                0x100081fc        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj
+                0x100081fc                tusb_inited
  .text.tu_edpt_validate
-                0x10008150       0x78 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj
-                0x10008150                tu_edpt_validate
+                0x10008204       0x78 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj
+                0x10008204                tu_edpt_validate
  .text.tu_edpt_bind_driver
-                0x100081c8       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj
-                0x100081c8                tu_edpt_bind_driver
+                0x1000827c       0x2c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/tusb.c.obj
+                0x1000827c                tu_edpt_bind_driver
  .text.tu_fifo_config
-                0x100081f4       0x78 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x100081f4                tu_fifo_config
+                0x100082a8       0x78 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x100082a8                tu_fifo_config
  .text.tu_fifo_count
-                0x1000826c       0x24 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x1000826c                tu_fifo_count
+                0x10008320       0x24 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x10008320                tu_fifo_count
  .text.tu_fifo_empty
-                0x10008290       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x10008290                tu_fifo_empty
+                0x10008344       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x10008344                tu_fifo_empty
  .text.tu_fifo_remaining
-                0x100082a0       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x100082a0                tu_fifo_remaining
+                0x10008354       0x20 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x10008354                tu_fifo_remaining
  .text.tu_fifo_read
-                0x100082c0       0x9c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x100082c0                tu_fifo_read
+                0x10008374       0x9c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x10008374                tu_fifo_read
  .text.tu_fifo_read_n
-                0x1000835c       0xf0 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x1000835c                tu_fifo_read_n
+                0x10008410       0xf0 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x10008410                tu_fifo_read_n
  .text.tu_fifo_write
-                0x1000844c       0x80 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x1000844c                tu_fifo_write
+                0x10008500       0x80 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x10008500                tu_fifo_write
  .text.tu_fifo_write_n
-                0x100084cc       0xe8 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x100084cc                tu_fifo_write_n
+                0x10008580       0xe8 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x10008580                tu_fifo_write_n
  .text.tu_fifo_clear
-                0x100085b4       0x4c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x100085b4                tu_fifo_clear
+                0x10008668       0x4c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x10008668                tu_fifo_clear
  .text.tu_fifo_set_overwritable
-                0x10008600       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
-                0x10008600                tu_fifo_set_overwritable
+                0x100086b4       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+                0x100086b4                tu_fifo_set_overwritable
  .text.startup._retrieve_unique_id_on_boot
-                0x1000863c       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+                0x100086f0       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
  .text.pico_get_unique_board_id_string
-                0x1000864c      0x1cc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
-                0x1000864c                pico_get_unique_board_id_string
+                0x10008700      0x1cc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+                0x10008700                pico_get_unique_board_id_string
  .text.flash_get_unique_id
-                0x10008818       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
-                0x10008818                flash_get_unique_id
- .text          0x10008854       0x64 /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/libc.a(lib_a-strlen-stub.o)
-                0x10008854                strlen
+                0x100088cc       0x3c CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+                0x100088cc                flash_get_unique_id
+ .text          0x10008908       0x64 /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/libc.a(lib_a-strlen-stub.o)
+                0x10008908                strlen
  *(.fini)
- .fini          0x100088b8        0x4 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crti.o
-                0x100088b8                _fini
- *fill*         0x100088bc        0x4 
- .fini.__stub   0x100088c0       0x70 linker stubs
+ .fini          0x1000896c        0x4 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crti.o
+                0x1000896c                _fini
+ .fini.__stub   0x10008970       0x70 linker stubs
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
@@ -2004,134 +2010,138 @@ LOAD /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/crt0
  *(SORT_BY_NAME(.dtors.*))
  *(.dtors)
  *(.eh_frame*)
- .eh_frame      0x10008930        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtbegin.o
-                0x10008930                . = ALIGN (0x4)
+ .eh_frame      0x100089e0        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtbegin.o
+                0x100089e0                . = ALIGN (0x4)
 
-.glue_7         0x10008930        0x0
- .glue_7        0x10008930        0x0 linker stubs
+.glue_7         0x100089e0        0x0
+ .glue_7        0x100089e0        0x0 linker stubs
 
-.glue_7t        0x10008930        0x0
- .glue_7t       0x10008930        0x0 linker stubs
+.glue_7t        0x100089e0        0x0
+ .glue_7t       0x100089e0        0x0 linker stubs
 
-.vfp11_veneer   0x10008930        0x0
- .vfp11_veneer  0x10008930        0x0 linker stubs
+.vfp11_veneer   0x100089e0        0x0
+ .vfp11_veneer  0x100089e0        0x0 linker stubs
 
-.v4_bx          0x10008930        0x0
- .v4_bx         0x10008930        0x0 linker stubs
+.v4_bx          0x100089e0        0x0
+ .v4_bx         0x100089e0        0x0 linker stubs
 
-.iplt           0x10008930        0x0
- .iplt          0x10008930        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtbegin.o
+.iplt           0x100089e0        0x0
+ .iplt          0x100089e0        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtbegin.o
 
-.rodata         0x10008930      0x534
+.rodata         0x100089e0      0x554
  *(EXCLUDE_FILE(*libm.a: *libc.a:*lib_a-mem*.o *libgcc.a:) .rodata*)
- .rodata.main.str1.4
-                0x10008930       0x13 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
- *fill*         0x10008943        0x1 
+ .rodata.encoder_left.str1.4
+                0x100089e0       0x13 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
+ *fill*         0x100089f3        0x1 
+ .rodata.encoder_right.str1.4
+                0x100089f4       0x19 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
+ *fill*         0x10008a0d        0x3 
  .rodata.spin_lock_claim_unused.str1.4
-                0x10008944       0x1b CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
- *fill*         0x1000895f        0x1 
+                0x10008a10       0x1b CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+ *fill*         0x10008a2b        0x1 
  .rodata.user_irq_claim_unused.str1.4
-                0x10008960       0x1b CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
- *fill*         0x1000897b        0x1 
+                0x10008a2c       0x1b CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+ *fill*         0x10008a47        0x1 
  .rodata.hardware_alarm_claim.str1.4
-                0x1000897c       0x22 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
- *fill*         0x1000899e        0x2 
+                0x10008a48       0x22 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+ *fill*         0x10008a6a        0x2 
  .rodata.hard_assertion_failure.str1.4
-                0x100089a0        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+                0x10008a6c        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
  .rodata.panic.str1.4
-                0x100089ac       0x12 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
- *fill*         0x100089be        0x2 
+                0x10008a78       0x12 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+ *fill*         0x10008a8a        0x2 
  .rodata._vsnprintf
-                0x100089c0      0x1e0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10008a8c      0x1e0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .rodata._etoa.part.0.str1.4
-                0x10008ba0        0x9 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
- *fill*         0x10008ba9        0x3 
+                0x10008c6c        0x9 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+ *fill*         0x10008c75        0x3 
  .rodata._ftoa.str1.4
-                0x10008bac        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10008c78        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+ *fill*         0x10008c84        0x4 
  .rodata.pow10.5391
-                0x10008bb8       0x50 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x10008c88       0x50 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .rodata.__bi_44
-                0x10008c08        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008cd8        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .rodata.__bi_75
-                0x10008c14        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008ce4        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .rodata.__bi_81
-                0x10008c20        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008cf0        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .rodata.str1.4
-                0x10008c2c       0x44 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008cfc       0x44 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .rodata.crlf_str.5860
-                0x10008c70        0x2 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
- *fill*         0x10008c72        0x2 
+                0x10008d40        0x2 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+ *fill*         0x10008d42        0x2 
  .rodata._resetd_driver
-                0x10008c74       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x10008d44       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
  .rodata.__bi_118.7154
-                0x10008c8c        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x10008d5c        0xc CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
  .rodata.str1.4
-                0x10008c98       0x13 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
- *fill*         0x10008cab        0x1 
+                0x10008d68       0x13 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+ *fill*         0x10008d7b        0x1 
  .rodata.str1.4
-                0x10008cac       0x2a CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
- *fill*         0x10008cd6        0x2 
+                0x10008d7c       0x2a CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+ *fill*         0x10008da6        0x2 
  .rodata.usbd_desc_cfg
-                0x10008cd8       0x54 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+                0x10008da8       0x54 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
  .rodata.usbd_desc_device
-                0x10008d2c       0x12 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
- *fill*         0x10008d3e        0x2 
+                0x10008dfc       0x12 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+ *fill*         0x10008e0e        0x2 
  .rodata.usbd_desc_str
-                0x10008d40       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+                0x10008e10       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
  .rodata.dcd_rp2040_irq.str1.4
-                0x10008d58       0x14 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x10008e28       0x14 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
  .rodata._hw_endpoint_buffer_control_update32.str1.4
-                0x10008d6c       0x1f CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
- *fill*         0x10008d8b        0x1 
+                0x10008e3c       0x1f CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+ *fill*         0x10008e5b        0x1 
  .rodata.hw_endpoint_xfer_continue.str1.4
-                0x10008d8c       0x29 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
- *fill*         0x10008db5        0x3 
+                0x10008e5c       0x29 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+ *fill*         0x10008e85        0x3 
  .rodata.str1.4
-                0x10008db8        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+                0x10008e88        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
                                   0x7 (size before relaxing)
  .rodata.tud_task
-                0x10008dc0       0x8c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10008e90       0x8c CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
  .rodata._usbd_driver
-                0x10008e4c       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x10008e64                . = ALIGN (0x4)
+                0x10008f1c       0x18 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x10008f34                . = ALIGN (0x4)
  *(SORT_BY_ALIGNMENT(SORT_BY_NAME(.flashdata*)))
-                0x10008e64                . = ALIGN (0x4)
+                0x10008f34                . = ALIGN (0x4)
 
-.rel.dyn        0x10008e64        0x0
- .rel.iplt      0x10008e64        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtbegin.o
+.rel.dyn        0x10008f34        0x0
+ .rel.iplt      0x10008f34        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x10008e64                __exidx_start = .
+                0x10008f34                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x10008e64                __exidx_end = .
-                0x10008e64                . = ALIGN (0x4)
-                0x10008e64                __binary_info_start = .
+                0x10008f34                __exidx_end = .
+                0x10008f34                . = ALIGN (0x4)
+                0x10008f34                __binary_info_start = .
 
-.binary_info    0x10008e64       0x20
+.binary_info    0x10008f34       0x20
  *(.binary_info.keep.*)
  .binary_info.keep.__bi_ptr22
-                0x10008e64        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008f34        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr30
-                0x10008e68        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008f38        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr38
-                0x10008e6c        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008f3c        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr44
-                0x10008e70        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008f40        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr50
-                0x10008e74        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008f44        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr75
-                0x10008e78        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008f48        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr81
-                0x10008e7c        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x10008f4c        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  *(.binary_info.*)
  .binary_info.__bi_ptr118
-                0x10008e80        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
-                0x10008e84                __binary_info_end = .
-                0x10008e84                . = ALIGN (0x4)
-                0x10008e84                __etext = .
+                0x10008f50        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x10008f54                __binary_info_end = .
+                0x10008f54                . = ALIGN (0x4)
+                0x10008f54                __etext = .
 
 .ram_vector_table
                 0x20000000       0xc0
@@ -2140,7 +2150,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/crt0
                 0x20000000       0xc0 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
                 0x20000000                ram_vector_table
 
-.data           0x200000c0      0x3b0 load address 0x10008e84
+.data           0x200000c0      0x3b0 load address 0x10008f54
                 0x200000c0                __data_start__ = .
  *(vtable)
  *(.time_critical*)
@@ -2242,35 +2252,35 @@ LOAD /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/crt0
                 0x20000470                __data_end__ = .
 
 .tm_clone_table
-                0x20000470        0x0 load address 0x10009234
+                0x20000470        0x0 load address 0x10009304
  .tm_clone_table
                 0x20000470        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtbegin.o
  .tm_clone_table
                 0x20000470        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtend.o
 
-.igot.plt       0x20000470        0x0 load address 0x10009234
+.igot.plt       0x20000470        0x0 load address 0x10009304
  .igot.plt      0x20000470        0x0 /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/crtbegin.o
 
 .uninitialized_data
-                0x20000470        0x0 load address 0x10009234
+                0x20000470        0x0 load address 0x10009304
                 0x20000470                . = ALIGN (0x4)
  *(.uninitialized_data*)
 
-.scratch_x      0x20040000        0x0 load address 0x10009234
+.scratch_x      0x20040000        0x0 load address 0x10009304
                 0x20040000                __scratch_x_start__ = .
  *(.scratch_x.*)
                 0x20040000                . = ALIGN (0x4)
                 0x20040000                __scratch_x_end__ = .
-                0x10009234                __scratch_x_source__ = LOADADDR (.scratch_x)
+                0x10009304                __scratch_x_source__ = LOADADDR (.scratch_x)
 
-.scratch_y      0x20041000        0x0 load address 0x10009234
+.scratch_y      0x20041000        0x0 load address 0x10009304
                 0x20041000                __scratch_y_start__ = .
  *(.scratch_y.*)
                 0x20041000                . = ALIGN (0x4)
                 0x20041000                __scratch_y_end__ = .
-                0x10009234                __scratch_y_source__ = LOADADDR (.scratch_y)
+                0x10009304                __scratch_y_source__ = LOADADDR (.scratch_y)
 
-.bss            0x20000470      0xd9c
+.bss            0x20000470      0xda0
                 0x20000470                . = ALIGN (0x4)
                 0x20000470                __bss_start__ = .
  *(SORT_BY_ALIGNMENT(SORT_BY_NAME(.bss*)))
@@ -2314,65 +2324,68 @@ LOAD /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/crt0
  .bss.encoder_count
                 0x20000ad8        0x4 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
                 0x20000ad8                encoder_count
- .bss.filter    0x20000adc        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+ .bss.encoder_count_RIGHT
+                0x20000adc        0x4 CMakeFiles/rotary_encoder.dir/rotary_ecoder_usb_comm/rotary_encoder.c.obj
+                0x20000adc                encoder_count_RIGHT
+ .bss.filter    0x20000ae0        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
  .bss.hw_endpoints
-                0x20000ae0      0x400 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x20000ae4      0x400 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
  .bss.lazy_vsnprintf
-                0x20000ee0        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x20000ee4        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .bss.load_value
-                0x20000ee4        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+                0x20000ee8        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
  .bss.next_buffer_ptr
-                0x20000ee8        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
- .bss.pools     0x20000eec       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x20000eec        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+ .bss.pools     0x20000ef0       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
  .bss.raw_irq_mask
-                0x20000efc        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+                0x20000f00        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
  .bss.retrieved_id
-                0x20000f04        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+                0x20000f08        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
  .bss.sf_clz_func
-                0x20000f0c        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
-                0x20000f0c                sf_clz_func
+                0x20000f10        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+                0x20000f10                sf_clz_func
  .bss.sleep_notifier
-                0x20000f10        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
+                0x20000f14        0x4 CMakeFiles/rotary_encoder.dir/pico-sdk/src/common/pico_time/time.c.obj
  .bss.stdio_usb_mutex
-                0x20000f14        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x20000f18        0x8 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
  .bss.target_hi
-                0x20000f1c       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x20000f20       0x10 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
  .bss.usbd_serial_str
-                0x20000f2c       0x11 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
- *fill*         0x20000f3d        0x3 
+                0x20000f30       0x11 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+ *fill*         0x20000f41        0x3 
  .bss.user_irq_claimed
-                0x20000f40        0x2 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x20000f44        0x2 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
  .bss._app_driver_count
-                0x20000f42        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x20000f46        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
  .bss._usbd_initialized
-                0x20000f43        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x20000f47        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
  .bss.boot2_copyout_valid
-                0x20000f44        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
- .bss.claimed   0x20000f45        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x20000f48        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+ .bss.claimed   0x20000f49        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
  .bss.irq_hander_chain_free_slot_head
-                0x20000f46        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
- .bss.itf_num   0x20000f47        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x20000f4a        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+ .bss.itf_num   0x20000f4b        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
  .bss.low_priority_irq_num
-                0x20000f48        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x20000f4c        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
  .bss.timer_callbacks_pending
-                0x20000f49        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x20000f4d        0x1 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
  *(COMMON)
- *fill*         0x20000f4a        0x2 
- COMMON         0x20000f4c      0x100 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
-                0x20000f4c                sd_table
- COMMON         0x2000104c      0x100 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
-                0x2000104c                sf_table
- COMMON         0x2000114c       0xc0 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x2000114c                _usbd_qdef_buf
-                0x2000120c                . = ALIGN (0x4)
-                0x2000120c                __bss_end__ = .
+ *fill*         0x20000f4e        0x2 
+ COMMON         0x20000f50      0x100 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+                0x20000f50                sd_table
+ COMMON         0x20001050      0x100 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+                0x20001050                sf_table
+ COMMON         0x20001150       0xc0 CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x20001150                _usbd_qdef_buf
+                0x20001210                . = ALIGN (0x4)
+                0x20001210                __bss_end__ = .
 
-.heap           0x2000120c      0x800
-                0x2000120c                __end__ = .
-                0x2000120c                end = __end__
+.heap           0x20001210      0x800
+                0x20001210                __end__ = .
+                0x20001210                end = __end__
  *(.heap*)
- .heap          0x2000120c      0x800 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
-                0x20001a0c                __HeapLimit = .
+ .heap          0x20001210      0x800 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
+                0x20001a10                __HeapLimit = .
 
 .stack1_dummy   0x20040000        0x0
  *(.stack1*)
@@ -2381,8 +2394,8 @@ LOAD /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/crt0
  *(.stack*)
  .stack         0x20041000      0x800 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
 
-.flash_end      0x10009234        0x0
-                0x10009234                __flash_binary_end = .
+.flash_end      0x10009304        0x0
+                0x10009304                __flash_binary_end = .
                 0x20040000                __StackLimit = (ORIGIN (RAM) + LENGTH (RAM))
                 0x20041000                __StackOneTop = (ORIGIN (SCRATCH_X) + LENGTH (SCRATCH_X))
                 0x20042000                __StackTop = (ORIGIN (SCRATCH_Y) + LENGTH (SCRATCH_Y))
@@ -2460,7 +2473,7 @@ LOAD CMakeFiles/rotary_encoder.dir/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.o
 LOAD CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
 LOAD CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
 LOAD CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
-LOAD /tmp/ccK1qNIR.o
+LOAD /tmp/ccu7KkG7.o
 LOAD /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/libstdc++.a
 LOAD /usr/lib/gcc/arm-none-eabi/7.3.1/../../../arm-none-eabi/lib/thumb/v6-m/libm.a
 START GROUP
@@ -2573,7 +2586,7 @@ OUTPUT(rotary_encoder.elf elf32-littlearm)
  .ARM.attributes
                 0x00000842       0x32 CMakeFiles/rotary_encoder.dir/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
  .ARM.attributes
-                0x00000874       0x22 /tmp/ccK1qNIR.o
+                0x00000874       0x22 /tmp/ccu7KkG7.o
  .ARM.attributes
                 0x00000896       0x1e /usr/lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/libgcc.a(_dvmd_tls.o)
  .ARM.attributes
