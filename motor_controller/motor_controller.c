@@ -74,6 +74,7 @@ void motor_forward(uint8_t duration) {
     while (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
         gpio_put(MOTOR1_ENABLE_PIN, true);
         gpio_put(MOTOR2_ENABLE_PIN, true);
+        sleep_ms(1);
     }
     // gpio_put(MOTOR1_ENABLE_PIN, true);
     // gpio_put(MOTOR2_ENABLE_PIN, true);
