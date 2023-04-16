@@ -83,17 +83,17 @@ int main() {
 	std::string msg_string;
 
 	// AWS dropbox file
-	std::string filepath = "/home/pi/Desktop/AWS/location.txt";
+	// std::string filepath = "/home/pi/Desktop/AWS/location.txt";
 	
 	// FileIO fio(filepath);
 	
 	while (1) {
-		// std::cout<<"Please enter command: ";
-		// std::cin>>msg_string;
-		// std::cout<<std::endl;
-		FileIO fio(filepath);
+		std::cout<<"Please enter command: ";
+		std::cin>>msg_string;
+		std::cout<<std::endl;
+		// FileIO fio(filepath);
 
-		bool read_success = fio.read(msg_string);
+		// bool read_success = fio.read(msg_string);
 
 		// std::cout<<msg_string<<std::endl;
 
@@ -113,7 +113,7 @@ int main() {
 			msg_string = "10000000";
 		}
 
-		fio.clear();
+		// fio.clear();
 		
 		strcpy(msg, msg_string.c_str());
 		
