@@ -27,12 +27,30 @@ void echo_isr_FORWARD_A(uint gpio, uint32_t events);
 
 void echo_isr_FORWARD_B(uint gpio, uint32_t events);
 
+/*
+Read Left Ultrasonic Sensor and calculate distance in centimeters (cm).
+return: distance in cm of closest impedance.
+*/
 float ultrasonic_left();
 
+/*
+Read Right Ultrasonic Sensor and calculate distance in centimeters (cm).
+return: distance in cm of closest impedance.
+*/
 float ultrasonic_right();
 
+/*
+Read Left Forward Ultrasonic Sensor and calculate distance in centimeters (cm).
+return: distance in cm of closest impedance.
+*/
 float ultrasonic_forward_a();
 
+/*
+Read Right Forward Ultrasonic Sensor and calculate distance in centimeters (cm).
+return: distance in cm of closest impedance.
+*/
 float ultrasonic_forward_b();
+
+bool collision_imminent_check(enum DIR dir, float threshold);
 
 #endif

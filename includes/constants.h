@@ -5,4 +5,6 @@
 #define SUCCESS 0
 #endif
 
+enum DIR{FORWARD, LEFT, RIGHT};
+
 #endif
