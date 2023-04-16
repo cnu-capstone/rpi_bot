@@ -8,14 +8,14 @@
 
 #include "constants.h"
 
-#define TRIGGER_PIN_LEFT 2  // GPIO pin number for trigger
-#define ECHO_PIN_LEFT 3   // GPIO pin number for echo
+#define TRIGGER_PIN_LEFT 3  // GPIO pin number for trigger
+#define ECHO_PIN_LEFT 2   // GPIO pin number for echo
 
-#define TRIGGER_PIN_RIGHT 0  // GPIO pin number for trigger
-#define ECHO_PIN_RIGHT 1    // GPIO pin number for echo
+#define TRIGGER_PIN_RIGHT 5  // GPIO pin number for trigger
+#define ECHO_PIN_RIGHT 4    // GPIO pin number for echo
 
-#define TRIGGER_PIN_FORWARD_A 4  // GPIO pin number for trigger
-#define ECHO_PIN_FORWARD_A 5   // GPIO pin number for echo
+#define TRIGGER_PIN_FORWARD_A 0  // GPIO pin number for trigger
+#define ECHO_PIN_FORWARD_A 1   // GPIO pin number for echo
 #define TRIGGER_PIN_FORWARD_B 6  // GPIO pin number for trigger
 #define ECHO_PIN_FORWARD_B 7   // GPIO pin number for echo
 

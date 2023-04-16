@@ -9,7 +9,7 @@
 
 // Ultrasonic Sensor Threshold
 // Values less than 35 cm are considered possible collisions
-#define COLL_THRHLD 35
+#define COLL_THRHLD 100
 
 #define bit_width 3
 #define CMD_LEN 8

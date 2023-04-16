@@ -2,8 +2,8 @@
 
 bool INSTRUCTIONS[bit_width] = {false, false, false};  // Enable, A, B
 const uint MOTOR1_ENABLE_PIN = 18;  // Right Motor
-const uint MOTOR1_POS_PIN = 19;
-const uint MOTOR1_NEG_PIN = 16;
+const uint MOTOR1_POS_PIN = 16;
+const uint MOTOR1_NEG_PIN = 19;
 const uint MOTOR2_POS_PIN = 20;
 const uint MOTOR2_NEG_PIN = 17;
 const uint MOTOR2_ENABLE_PIN = 21;  // Left Motor
@@ -74,7 +74,7 @@ void motor_forward(uint8_t duration) {
     while (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
         gpio_put(MOTOR1_ENABLE_PIN, true);
         gpio_put(MOTOR2_ENABLE_PIN, true);
-        sleep_ms(1);
+        // sleep_ms(500);
     }
     // gpio_put(MOTOR1_ENABLE_PIN, true);
     // gpio_put(MOTOR2_ENABLE_PIN, true);

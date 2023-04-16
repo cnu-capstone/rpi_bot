@@ -126,27 +126,42 @@ float ultrasonic_right() {
 }
 
 float ultrasonic_forward_a() {
+    sleep_ms(5);
     // printf("ultrasonic_forward_a()");  // Use printf whenever you need std out
     gpio_init(TRIGGER_PIN_FORWARD_A);
     gpio_set_dir(TRIGGER_PIN_FORWARD_A, GPIO_OUT);
     gpio_init(ECHO_PIN_FORWARD_A);
     gpio_set_dir(ECHO_PIN_FORWARD_A, GPIO_IN);
 
-    gpio_put(TRIGGER_PIN_FORWARD_A, 0);  // Make sure trigger pin is low
-    gpio_set_irq_enabled_with_callback(ECHO_PIN_FORWARD_A, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_FORWARD_A);
+    // gpio_put(TRIGGER_PIN_FORWARD_A, 0);  // Make sure trigger pin is low
+    // gpio_set_irq_enabled_with_callback(ECHO_PIN_FORWARD_A, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_FORWARD_A);
 
-    // Send a 10us pulse to trigger the sensor
-    gpio_put(TRIGGER_PIN_FORWARD_A, 1);
-    busy_wait_us_32(10);
-    gpio_put(TRIGGER_PIN_FORWARD_A, 0);
+    // // Send a 10us pulse to trigger the sensor
+    // gpio_put(TRIGGER_PIN_FORWARD_A, 1);
+    // busy_wait_us_32(10);
+    // gpio_put(TRIGGER_PIN_FORWARD_A, 0);
 
     // Wait for echo pulse to be received
     //#echo_received_RIGHT;
     // Calculate duration of echo pulse
-    uint32_t pulse_duration_FORWARD_A = end_time_FORWARD_A - start_time_FORWARD_A;
+    uint32_t pulse_duration_FORWARD_A = 0;
+
+    for(int i = 0; i < 10; i++) {
+        gpio_put(TRIGGER_PIN_FORWARD_A, 0);  // Make sure trigger pin is low
+        gpio_set_irq_enabled_with_callback(ECHO_PIN_FORWARD_A, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_FORWARD_A);
+
+        // Send a 10us pulse to trigger the sensor
+        gpio_put(TRIGGER_PIN_FORWARD_A, 1);
+        busy_wait_us_32(10);
+        gpio_put(TRIGGER_PIN_FORWARD_A, 0);
+
+        pulse_duration_FORWARD_A += end_time_FORWARD_A - start_time_FORWARD_A;
+
+        sleep_ms(2);
+    }
 
     // Calculate distance in centimeters
-    float distance_cm_FORWARD_A = pulse_duration_FORWARD_A* 0.0343 / 2;
+    float distance_cm_FORWARD_A = (pulse_duration_FORWARD_A/10)* 0.0343 / 2;
 
     // printf("Distance forward a: %.2f cm\n", distance_cm_FORWARD_A);
 
@@ -156,27 +171,44 @@ float ultrasonic_forward_a() {
 }
 
 float ultrasonic_forward_b() {
+    sleep_ms(5);
 	// printf("ultrasonic_forward_b()");  // Use printf whenever you need std out
     gpio_init(TRIGGER_PIN_FORWARD_B);
     gpio_set_dir(TRIGGER_PIN_FORWARD_B, GPIO_OUT);
     gpio_init(ECHO_PIN_FORWARD_B);
     gpio_set_dir(ECHO_PIN_FORWARD_B, GPIO_IN);
 
-    gpio_put(TRIGGER_PIN_FORWARD_B, 0);  // Make sure trigger pin is low
-    gpio_set_irq_enabled_with_callback(ECHO_PIN_FORWARD_B, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_FORWARD_B);
+    // gpio_put(TRIGGER_PIN_FORWARD_B, 0);  // Make sure trigger pin is low
+    // gpio_set_irq_enabled_with_callback(ECHO_PIN_FORWARD_B, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_FORWARD_B);
 
-    // Send a 10us pulse to trigger the sensor
-    gpio_put(TRIGGER_PIN_FORWARD_B, 1);
-    busy_wait_us_32(10);
-    gpio_put(TRIGGER_PIN_FORWARD_B, 0);
+    // // Send a 10us pulse to trigger the sensor
+    // gpio_put(TRIGGER_PIN_FORWARD_B, 1);
+    // busy_wait_us_32(10);
+    // gpio_put(TRIGGER_PIN_FORWARD_B, 0);
 
     // Wait for echo pulse to be received
     //#echo_received_RIGHT;
     // Calculate duration of echo pulse
-    uint32_t pulse_duration_FORWARD_B = end_time_FORWARD_B - start_time_FORWARD_B;
+    // uint32_t pulse_duration_FORWARD_B = end_time_FORWARD_B - start_time_FORWARD_B;
+    uint32_t pulse_duration_FORWARD_B = 0;
 
     // Calculate distance in centimeters
-    float distance_cm_FORWARD_B = pulse_duration_FORWARD_B* 0.0343 / 2;
+
+    for (int i = 0; i < 10; i++) {
+        gpio_put(TRIGGER_PIN_FORWARD_B, 0);  // Make sure trigger pin is low
+        gpio_set_irq_enabled_with_callback(ECHO_PIN_FORWARD_B, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_FORWARD_B);
+
+        // Send a 10us pulse to trigger the sensor
+        gpio_put(TRIGGER_PIN_FORWARD_B, 1);
+        busy_wait_us_32(10);
+        gpio_put(TRIGGER_PIN_FORWARD_B, 0);
+
+        pulse_duration_FORWARD_B += end_time_FORWARD_B - start_time_FORWARD_B;
+
+        sleep_ms(2);
+    }
+
+    float distance_cm_FORWARD_B = (pulse_duration_FORWARD_B/10)* 0.0343 / 2;
 
     // printf("Distance forward b: %.2f cm\n", distance_cm_FORWARD_B);
 
@@ -203,3 +235,16 @@ bool collision_imminent_check(enum DIR dir, float threshold) {
     }
     return measured_dist <= threshold;
 }
+
+// int main() {
+//     stdio_init_all();
+
+//     sleep_ms(10000);
+//     for (int i = 0; i < 30; i++) {
+//         printf("Forward A: %f \t", ultrasonic_forward_a());
+//         // sleep_ms(500);
+//         printf("Forward B: %f \n", ultrasonic_forward_b());
+//         // sleep_ms(500);
+//     }
+//     return SUCCESS;
+// }
