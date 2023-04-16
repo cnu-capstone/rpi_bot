@@ -71,9 +71,13 @@ void motor_forward(uint8_t duration) {
     gpio_put(MOTOR2_POS_PIN, true);
     gpio_put(MOTOR2_NEG_PIN, false);
     // SET MOTOR STATE TO ON
-    gpio_put(MOTOR1_ENABLE_PIN, true);
-    gpio_put(MOTOR2_ENABLE_PIN, true);
-    sleep_ms(duration * 1000);
+    while (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
+        gpio_put(MOTOR1_ENABLE_PIN, true);
+        gpio_put(MOTOR2_ENABLE_PIN, true);
+    }
+    // gpio_put(MOTOR1_ENABLE_PIN, true);
+    // gpio_put(MOTOR2_ENABLE_PIN, true);
+    // sleep_ms(duration * 1000);
 }
 
 void motor_reverse(uint8_t duration) {

@@ -4,8 +4,12 @@
 #include <stdio.h>  // COMM STUFF
 #include <math.h>  // For POW function
 #include "pico/stdlib.h"
-#include "../includes/constants.h"
-#include "../includes/ultrasonic.h"
+#include "ultrasonic.h"
+#include "constants.h"
+
+// Ultrasonic Sensor Threshold
+// Values less than 35 cm are considered possible collisions
+#define COLL_THRHLD 35
 
 #define bit_width 3
 #define CMD_LEN 8
