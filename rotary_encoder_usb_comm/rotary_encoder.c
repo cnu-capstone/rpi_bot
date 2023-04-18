@@ -1,13 +1,3 @@
-// Moved to Header File
-// #include <stdio.h>
-// #include "pico/stdlib.h"
-// #include "hardware/gpio.h"
-
-// // Pin assignments for encoder inputs
-// #define ENCODER_PIN_A 14
-// #define ENCODER_PIN_B 15
-// #define ENCODER_PIN_A_RIGHT 18
-// #define ENCODER_PIN_B_RIGHT 19
 #include "../../includes/rotary_encoder.h"
 
 // Global variable to store encoder count
@@ -60,7 +50,7 @@ int encoder_left() {
     gpio_init(ENCODER_PIN_B);  // Initialize encoder input B
     gpio_set_dir(ENCODER_PIN_B, GPIO_IN);
     gpio_pull_up(ENCODER_PIN_B);
-    
+
     gpio_set_irq_enabled_with_callback(ENCODER_PIN_A, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &encoder_isr_A);  // Enable interrupt on encoder input A
 
     return encoder_count;
@@ -79,18 +69,3 @@ int encoder_right() {
     
     return encoder_count_RIGHT;
 }
-
-// int main() {
-//     stdio_init_all();  // Initialize stdio for printing
-
-//     while (true) {
-//         // Print encoder count
-       
-//         sleep_ms(500);
-//         encoder_right();
-//         sleep_ms(500);
-//         encoder_left();  // Delay for stability
-//     }
-
-//     return 0;
-// }
