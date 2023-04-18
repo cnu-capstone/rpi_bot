@@ -1,3 +1,6 @@
+#ifndef ROTARY_ENCODER_H
+#define ROTARY_ENCODER_H
+
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
@@ -17,3 +20,5 @@ void encoder_isr_A_RIGHT(uint gpio, uint32_t events);
 int encoder_left();
 
 int encoder_right();
+
+#endif

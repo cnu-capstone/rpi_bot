@@ -23,7 +23,8 @@ pico_sdk_init()
 
 add_executable(${PROJECT_NAME}
         motor_controller/motor_controller.c
-        ultrasonic_usb_comm/ultrasonic.c
+        ultrasonic/ultrasonic.c
+        rotary_encoder/rotary_encoder.c
         )
 
 # add_executable(${PROJECT_NAME}

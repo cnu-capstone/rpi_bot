@@ -5,6 +5,7 @@
 #include <math.h>  // For POW function
 #include "pico/stdlib.h"
 #include "ultrasonic.h"
+#include "rotary_encoder.h"
 #include "constants.h"
 
 // Ultrasonic Sensor Threshold
