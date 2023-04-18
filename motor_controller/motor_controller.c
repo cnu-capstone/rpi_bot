@@ -1,19 +1,9 @@
-#include <stdio.h>  // COMM STUFF
-#include <math.h>  // For POW function
-#include "pico/stdlib.h"
-
-#ifndef bit_width
-#define bit_width 3
-#endif
-
-#ifndef CMD_LEN
-#define CMD_LEN 8
-#endif
+#include "../includes/motor_controller.h"
 
 bool INSTRUCTIONS[bit_width] = {false, false, false};  // Enable, A, B
 const uint MOTOR1_ENABLE_PIN = 18;  // Right Motor
-const uint MOTOR1_POS_PIN = 19;
-const uint MOTOR1_NEG_PIN = 16;
+const uint MOTOR1_POS_PIN = 16;
+const uint MOTOR1_NEG_PIN = 19;
 const uint MOTOR2_POS_PIN = 20;
 const uint MOTOR2_NEG_PIN = 17;
 const uint MOTOR2_ENABLE_PIN = 21;  // Left Motor
@@ -81,12 +71,13 @@ void motor_forward(uint8_t duration) {
     gpio_put(MOTOR2_POS_PIN, true);
     gpio_put(MOTOR2_NEG_PIN, false);
     // SET MOTOR STATE TO ON
-    gpio_put(MOTOR1_ENABLE_PIN, true);
-    gpio_put(MOTOR2_ENABLE_PIN, true);
-    sleep_ms(duration * 1000);
+    while (!collision_imminent_check(FORWARD, COLL_THRHLD)) {  // Drive until there is a collision detected
+        gpio_put(MOTOR1_ENABLE_PIN, true);
+        gpio_put(MOTOR2_ENABLE_PIN, true);
+    }
 }
 
-void motor_reverse(uint8_t duration) {
+void motor_reverse(uint8_t duration) {  // No rear ultrasonic
     // SET MOTOR DIRECTION BACKWARD
     gpio_put(MOTOR1_POS_PIN, false);
     gpio_put(MOTOR1_NEG_PIN, true);
@@ -105,9 +96,11 @@ void motor_right(uint8_t duration) {  // 0 Degree Turn
     gpio_put(MOTOR1_POS_PIN, false);
     gpio_put(MOTOR1_NEG_PIN, true);
     // SET MOTOR STATE TO ON
-    gpio_put(MOTOR2_ENABLE_PIN, true);
-    gpio_put(MOTOR1_ENABLE_PIN, true);
-    sleep_ms(900);
+    while (!collision_imminent_check(RIGHT, COLL_THRHLD)) {
+        gpio_put(MOTOR2_ENABLE_PIN, true);
+        gpio_put(MOTOR1_ENABLE_PIN, true);
+    }
+    // sleep_ms(900);
 }
 
 void motor_left(uint8_t duration) {  // 0 Degree Turn
@@ -117,15 +110,17 @@ void motor_left(uint8_t duration) {  // 0 Degree Turn
     gpio_put(MOTOR1_POS_PIN, true);
     gpio_put(MOTOR1_NEG_PIN, false);
     // SET MOTOR STATE TO ON
-    gpio_put(MOTOR2_ENABLE_PIN, true);
-    gpio_put(MOTOR1_ENABLE_PIN, true);
+    while (!collision_imminent_check(LEFT, COLL_THRHLD)) {
+        gpio_put(MOTOR2_ENABLE_PIN, true);
+        gpio_put(MOTOR1_ENABLE_PIN, true);
+    }
     sleep_ms(900);
 }
 
 void motor_stall() {
     gpio_put(MOTOR1_ENABLE_PIN, false);
     gpio_put(MOTOR2_ENABLE_PIN, false);
-    sleep_ms(1000);
+    sleep_ms(100);  // Lowering from 1000 to 100
 }
 
 int main() {
@@ -144,11 +139,12 @@ int main() {
         uint8_t cmd_duration = 1;
         // Calculate distance
         for (int i = 3; i < CMD_LEN; i++) {
-            int cmd_val = 0;
+            // int cmd_val = 0;
             if (cmd[i] == '1') {
-                cmd_val = 1;
+                // cmd_val = 1;
+                cmd_duration += pow(2, (CMD_LEN - (i+1)));
             }
-            cmd_duration += cmd_val * pow(2, (CMD_LEN - (i+1)));
+            // cmd_duration += cmd_val * pow(2, (CMD_LEN - (i+1)));
         }
 
         if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 111
@@ -170,5 +166,5 @@ int main() {
     }
 
     pico_deinit();
-    return 0;
+    return SUCCESS;
 }

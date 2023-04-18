@@ -10,10 +10,10 @@ include(pico_sdk_import.cmake)
 # set(PICO_BOARD pico_w)
 set(PICO_BOARD pico)
 
-# project(motor_controller C CXX ASM)
+project(motor_controller C CXX ASM)
 # project(usb_comm C CXX ASM)
 # project(ultrasonic C CXX ASM)
- project(rotary_encoder C CXX ASM)
+# project(rotary_encoder C CXX ASM)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -21,9 +21,10 @@ set(CMAKE_CXX_STANDARD 17)
 # initialize the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-# add_executable(${PROJECT_NAME}
-#         motor_controller/motor_controller.c
-#         )
+add_executable(${PROJECT_NAME}
+        motor_controller/motor_controller.c
+        ultrasonic_usb_comm/ultrasonic.c
+        )
 
 # add_executable(${PROJECT_NAME}
 #         usb_comm/usb_comm.c
@@ -33,9 +34,9 @@ pico_sdk_init()
 #        ultrasonic_usb_comm/ultrasonic.c
 #        )
 
-add_executable(${PROJECT_NAME}
-        rotary_encoder_usb_comm/rotary_encoder.c
-        )
+# add_executable(${PROJECT_NAME}
+#         rotary_encoder_usb_comm/rotary_encoder.c
+#         )
 
 # Switches UART output to usb
 pico_enable_stdio_usb(${PROJECT_NAME} 1)
