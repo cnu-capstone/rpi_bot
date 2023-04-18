@@ -17,8 +17,16 @@ void encoder_isr_A(uint gpio, uint32_t events);
 // Interrupt handler for encoder input A
 void encoder_isr_A_RIGHT(uint gpio, uint32_t events);
 
+/*
+Read encoder rotation count from left motor rotary encoder
+return: int number of rotations of rotary encoder
+*/
 int encoder_left();
 
+/*
+Read encoder rotation count from right motor rotary encoder
+return: int number of rotations of rotary encoder
+*/
 int encoder_right();
 
 #endif
