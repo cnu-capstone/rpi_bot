@@ -98,7 +98,7 @@ int main() {
 		// std::cout<<msg_string<<std::endl;
 
 		if (std::strcmp(msg_string.c_str(), "Forward") == 0) {  // If string is "Forward"
-			msg_string = "11100001";
+			msg_string = "11111111";
 		}
 		else if (std::strcmp(msg_string.c_str(), "Left") == 0) {  // If string is "Left"
 			msg_string = "10100001";

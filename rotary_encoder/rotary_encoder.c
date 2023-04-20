@@ -1,4 +1,4 @@
-#include "../../includes/rotary_encoder.h"
+#include "../includes/rotary_encoder.h"
 
 // Global variable to store encoder count
 volatile int32_t encoder_count = 0;
@@ -9,15 +9,15 @@ void encoder_isr_A(uint gpio, uint32_t events) {
    if (gpio == ENCODER_PIN_A) {
         if (gpio_get(ENCODER_PIN_A)) {  // Check if input A is high
             if (gpio_get(ENCODER_PIN_B)) {
-                encoder_count++;  // Clockwise rotation
+                encoder_count--;  // Clockwise rotation
             } else {
-                encoder_count--;  // Counter-clockwise rotation
+                encoder_count++;  // Counter-clockwise rotation
             }
         } else {  // Input A is low
             if (gpio_get(ENCODER_PIN_B)) {
-                encoder_count--;  // Counter-clockwise rotation
+                encoder_count++;  // Counter-clockwise rotation
             } else {
-                encoder_count++;  // Clockwise rotation
+                encoder_count--;  // Clockwise rotation
             }
         }
     }
@@ -28,15 +28,15 @@ void encoder_isr_A_RIGHT(uint gpio, uint32_t events) {
     if (gpio == ENCODER_PIN_A_RIGHT) {
         if (gpio_get(ENCODER_PIN_A_RIGHT)) {  // Check if input A is high
             if (gpio_get(ENCODER_PIN_B_RIGHT)) {
-                encoder_count_RIGHT++;  // Clockwise rotation
+                encoder_count_RIGHT--;  // Clockwise rotation
             } else {
-                encoder_count_RIGHT--;  // Counter-clockwise rotation
+                encoder_count_RIGHT++;  // Counter-clockwise rotation
             }
         } else {  // Input A is low
             if (gpio_get(ENCODER_PIN_B_RIGHT)) {
-                encoder_count_RIGHT--;  // Counter-clockwise rotation
+                encoder_count_RIGHT++;  // Counter-clockwise rotation
             } else {
-                encoder_count_RIGHT++;  // Clockwise rotation
+                encoder_count_RIGHT--;  // Clockwise rotation
             }
         }
     }
@@ -67,9 +67,11 @@ int encoder_right() {
     
     gpio_set_irq_enabled_with_callback(ENCODER_PIN_A_RIGHT, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &encoder_isr_A_RIGHT);  // Enable interrupt on encoder input A
     
+    // printf("Right Encoder Count: %i \n", encoder_count_RIGHT);
+
     return encoder_count_RIGHT;
 }
 
 float ticks_to_cm(int num_ticks) {
-    return METER_ROTATIONS_CONV * (num_ticks / TICKS_PER_ROTATION);
+    return 27.928814548042 * (num_ticks / 1196.0);
 }
