@@ -134,7 +134,9 @@ void motor_forward(uint8_t instr_distance) {
             int ticks_delta_right = ticks_final_right - ticks_initial_right;
             int ticks_delta_left = ticks_final_left - ticks_initial_left;
             
-            int ticks_delta_target = (ticks_delta_right + ticks_delta_left) / 2;            
+            int ticks_delta_target = (ticks_delta_right + ticks_delta_left) / 2;    
+
+            printf("Left: %i\tRight: %i\tAVG: %i\n", ticks_delta_left, ticks_delta_right, ticks_delta_target);        
 
             float leg_distance_traveled = ticks_to_cm(ticks_final_right - ticks_initial_right);
 
@@ -148,7 +150,7 @@ void motor_forward(uint8_t instr_distance) {
                 }
             }
             
-            printf("Leg of Distance: %f \n", leg_distance_traveled);
+            // printf("Leg of Distance: %f \n", leg_distance_traveled);
             ticks_initial_right = ticks_final_right;  // Setup calculation for next iteration
             ticks_initial_left = ticks_final_left;
             distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
@@ -156,7 +158,7 @@ void motor_forward(uint8_t instr_distance) {
         else {
             motor_stall();
         }
-        printf("Distance Traveled: %f \n", distance_traveled);
+        // printf("Distance Traveled: %f \n", distance_traveled);
         sleep_ms(100);
     }     
 
