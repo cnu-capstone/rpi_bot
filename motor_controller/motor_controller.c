@@ -99,17 +99,21 @@ void motor_forward(uint8_t instr_distance) {
     // As speed decreases, increase duty cycle
 
     float distance_traveled = 0;
-    int ticks_initial = encoder_right();
+    int ticks_initial_right = encoder_right();
+    int ticks_initial_left = encoder_left();
+
+    int right_motor_cycles = 128;
+    int left_motor_cycles = 128;
 
     while (distance_traveled < instr_distance) {
         if (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
             // Drive for some time
             // Set 50% duty cycle
-            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 80);
-            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 176);
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, right_motor_cycles);
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 255 - right_motor_cycles);
 
-            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 40);
-            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 216);
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, left_motor_cycles);
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 255 - left_motor_cycles);
 
             pwm_set_enabled(MOTOR1_SLICE_NUM, true);
             pwm_set_enabled(MOTOR2_SLICE_NUM, true);
@@ -117,11 +121,23 @@ void motor_forward(uint8_t instr_distance) {
             // gpio_put(MOTOR1_ENABLE_PIN, true);
             // gpio_put(MOTOR2_ENABLE_PIN, true);
             // Check how far we drove
-            int ticks_final = encoder_right();
+            int ticks_final_right = encoder_right();
+            int ticks_final_left = encoder_left();
             // printf("Tick Initial: %i \tTick Final: %i \nTick Delta: %i \n", ticks_initial, ticks_final, ticks_final - ticks_initial);
-            float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial);
+
+            int ticks_delta_right = ticks_final_right - ticks_initial_right;
+            int ticks_delta_left = ticks_final_left - ticks_initial_left;
+
+            int ticks_delta_target = (ticks_delta_right + ticks_delta_left) / 2;
+
+            right_motor_cycles = right_motor_cycles * (ticks_delta_target / ticks_delta_right);
+            left_motor_cycles = left_motor_cycles * (ticks_delta_target / ticks_delta_left);
+
+
+            float leg_distance_traveled = (ticks_to_cm(ticks_delta_right) + ticks_to_cm(ticks_delta_left)) / 2;
             // printf("Leg of Distance: %f \n", leg_distance_traveled);
-            ticks_initial = ticks_final;  // Setup calculation for next iteration
+            ticks_initial_right = ticks_final_right;  // Setup calculation for next iteration
+            ticks_initial_left = ticks_final_left;
             distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
         }
         else {
