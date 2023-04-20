@@ -103,7 +103,7 @@ void motor_forward(uint8_t instr_distance) {
     // int ticks_initial_left = encoder_left();
 
     int right_motor_cycles = 96;
-    int left_motor_cycles = 88;
+    int left_motor_cycles = 86;
 
     while (distance_traveled < instr_distance) {
         if (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
@@ -206,7 +206,7 @@ void motor_right() {  // 0 Degree Turn
     float distance_traveled = 0;
     int ticks_initial = encoder_left();
 
-    while (distance_traveled < 7.0) {  // Experimental turn value
+    while (distance_traveled < 4.3) {  // Experimental turn value
         // if (!collision_imminent_check(RIGHT, COLL_THRHLD)) {
             // Drive for some time
             // Set 50% duty cycle
@@ -251,7 +251,7 @@ void motor_left() {  // 0 Degree Turn
     float distance_traveled = 0;
     int ticks_initial = encoder_right();
 
-    while (distance_traveled < 7.0) {  // Experimental turn value
+    while (distance_traveled < 4.3) {  // Experimental turn value
         // if (!collision_imminent_check(LEFT, COLL_THRHLD)) {
         // Drive for some time
         // Set 50% duty cycle
@@ -299,47 +299,81 @@ void motor_stall() {
     sleep_ms(100);  // Lowering from 1000 to 100
 }
 
+// int main() {
+//     stdio_init_all();  // INIT COMM
+//     pico_init();  // INIT GPIO
+
+//     char cmd[CMD_LEN];
+
+//     while(1) {
+//         read_stream(cmd);
+
+//         for (int i = 0; i < bit_width; i ++) {
+//             INSTRUCTIONS[i] = cmd[i] == '1';
+//         }
+
+//         uint8_t cmd_duration = 1;
+//         // Calculate distance
+//         for (int i = 3; i < CMD_LEN; i++) {
+//             // int cmd_val = 0;
+//             if (cmd[i] == '1') {
+//                 // cmd_val = 1;
+//                 cmd_duration += pow(2, (CMD_LEN - (i+1)));
+//             }
+//             // cmd_duration += cmd_val * pow(2, (CMD_LEN - (i+1)));
+//         }
+
+//         if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 111
+//             motor_forward(cmd_duration);
+//         }
+//         else if (INSTRUCTIONS[0] && !INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 101
+//             motor_left();
+//         }
+//         else if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && !INSTRUCTIONS[2]) {  // 110
+//             motor_right();
+//         }
+//         else if (!INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 011
+//             motor_reverse(cmd_duration);
+//         }
+//         else {
+//             motor_stall();
+//         }
+//         motor_stall();
+//     }
+
+//     pico_deinit();
+//     return SUCCESS;
+// }
+
 int main() {
     stdio_init_all();  // INIT COMM
     pico_init();  // INIT GPIO
 
-    char cmd[CMD_LEN];
+    motor_forward(32);
+    motor_stall();
+    sleep_ms(500);
 
-    while(1) {
-        read_stream(cmd);
+    motor_forward(6);
+    motor_stall();
+    sleep_ms(500);
 
-        for (int i = 0; i < bit_width; i ++) {
-            INSTRUCTIONS[i] = cmd[i] == '1';
-        }
+    motor_left();
+    motor_stall();
+    sleep_ms(500);
 
-        uint8_t cmd_duration = 1;
-        // Calculate distance
-        for (int i = 3; i < CMD_LEN; i++) {
-            // int cmd_val = 0;
-            if (cmd[i] == '1') {
-                // cmd_val = 1;
-                cmd_duration += pow(2, (CMD_LEN - (i+1)));
-            }
-            // cmd_duration += cmd_val * pow(2, (CMD_LEN - (i+1)));
-        }
+    motor_forward(32);
+    motor_stall();
+    sleep_ms(500);
 
-        if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 111
-            motor_forward(cmd_duration);
-        }
-        else if (INSTRUCTIONS[0] && !INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 101
-            motor_left();
-        }
-        else if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && !INSTRUCTIONS[2]) {  // 110
-            motor_right();
-        }
-        else if (!INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 011
-            motor_reverse(cmd_duration);
-        }
-        else {
-            motor_stall();
-        }
-        motor_stall();
-    }
+    motor_forward(17);
+    motor_stall();
+    sleep_ms(500);
+
+    motor_right();
+
+    motor_right();
+    
+    motor_stall();
 
     pico_deinit();
     return SUCCESS;
