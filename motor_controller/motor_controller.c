@@ -107,6 +107,12 @@ void motor_forward(uint8_t instr_distance) {
 
     while (distance_traveled < instr_distance) {
         if (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
+            if (right_motor_cycles > 255) {
+                right_motor_cycles = 255;
+            }
+            if (left_motor_cycles > 255) {
+                left_motor_cycles = 255;
+            }
             // Drive for some time
             // Set 50% duty cycle
             pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, right_motor_cycles);
@@ -130,9 +136,13 @@ void motor_forward(uint8_t instr_distance) {
 
             int ticks_delta_target = (ticks_delta_right + ticks_delta_left) / 2;
 
-            right_motor_cycles = right_motor_cycles * (ticks_delta_target / ticks_delta_right);
-            left_motor_cycles = left_motor_cycles * (ticks_delta_target / ticks_delta_left);
+            if (right_motor_cycles * (ticks_delta_target / ticks_delta_right) > 0) {
+                right_motor_cycles = right_motor_cycles * (ticks_delta_target / ticks_delta_right);
+            }
 
+            if (left_motor_cycles * (ticks_delta_target / ticks_delta_left) > 0) {
+                left_motor_cycles = left_motor_cycles * (ticks_delta_target / ticks_delta_left);
+            }
 
             float leg_distance_traveled = (ticks_to_cm(ticks_delta_right) + ticks_to_cm(ticks_delta_left)) / 2;
             // printf("Leg of Distance: %f \n", leg_distance_traveled);
