@@ -69,3 +69,7 @@ int encoder_right() {
     
     return encoder_count_RIGHT;
 }
+
+float ticks_to_cm(int num_ticks) {
+    return METER_ROTATIONS_CONV * (num_ticks / TICKS_PER_ROTATION);
+}

@@ -4,6 +4,7 @@
 #include <stdio.h>  // COMM STUFF
 #include <math.h>  // For POW function
 #include "pico/stdlib.h"
+#include "hardware/pwm.h"
 #include "ultrasonic.h"
 #include "rotary_encoder.h"
 #include "constants.h"
