@@ -230,7 +230,7 @@ void motor_left() {  // 0 Degree Turn
     float distance_traveled = 0;
     int ticks_initial = encoder_right();
 
-    while (distance_traveled < 5) {  // Experimental turn value
+    while (distance_traveled < 7.2) {  // Experimental turn value
         // if (!collision_imminent_check(LEFT, COLL_THRHLD)) {
         // Drive for some time
         // Set 50% duty cycle
