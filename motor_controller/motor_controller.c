@@ -105,11 +105,11 @@ void motor_forward(uint8_t instr_distance) {
         if (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
             // Drive for some time
             // Set 50% duty cycle
-            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 128);
-            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 128);
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 80);
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 176);
 
-            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 128);
-            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 128);
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 40);
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 216);
 
             pwm_set_enabled(MOTOR1_SLICE_NUM, true);
             pwm_set_enabled(MOTOR2_SLICE_NUM, true);
