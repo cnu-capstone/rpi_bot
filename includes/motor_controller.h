@@ -3,6 +3,7 @@
 
 #include <stdio.h>  // COMM STUFF
 #include <math.h>  // For POW function
+#include <stdlib.h>  // For ABS function
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 #include "ultrasonic.h"
