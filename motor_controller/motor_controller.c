@@ -105,6 +105,9 @@ void motor_forward(uint8_t instr_distance) {
     int right_motor_cycles = 128;
     int left_motor_cycles = 128;
 
+    int startup_wait = 2;
+    int iterations_waited = 0;
+
     while (distance_traveled < instr_distance) {
         if (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
             if (right_motor_cycles > 255) {
@@ -134,14 +137,19 @@ void motor_forward(uint8_t instr_distance) {
             int ticks_delta_right = ticks_final_right - ticks_initial_right;
             int ticks_delta_left = ticks_final_left - ticks_initial_left;
 
-            int ticks_delta_target = (ticks_delta_right + ticks_delta_left) / 2;
+            if (iterations_waited >= startup_wait) {
+                int ticks_delta_target = (ticks_delta_right + ticks_delta_left) / 2;
 
-            if (right_motor_cycles * (ticks_delta_target / ticks_delta_right) > 0) {
-                right_motor_cycles = right_motor_cycles * (ticks_delta_target / ticks_delta_right);
+                if (right_motor_cycles * (ticks_delta_target / ticks_delta_right) > 0) {
+                    right_motor_cycles = right_motor_cycles * (ticks_delta_target / ticks_delta_right);
+                }
+
+                if (left_motor_cycles * (ticks_delta_target / ticks_delta_left) > 0) {
+                    left_motor_cycles = left_motor_cycles * (ticks_delta_target / ticks_delta_left);
+                }
             }
-
-            if (left_motor_cycles * (ticks_delta_target / ticks_delta_left) > 0) {
-                left_motor_cycles = left_motor_cycles * (ticks_delta_target / ticks_delta_left);
+            else {
+                iterations_waited++;
             }
 
             float leg_distance_traveled = (ticks_to_cm(ticks_delta_right) + ticks_to_cm(ticks_delta_left)) / 2;
