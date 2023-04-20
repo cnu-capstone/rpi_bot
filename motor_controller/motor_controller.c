@@ -103,7 +103,7 @@ void motor_forward(uint8_t instr_distance) {
     // int ticks_initial_left = encoder_left();
 
     int right_motor_cycles = 96;
-    int left_motor_cycles = 48;
+    int left_motor_cycles = 88;
 
     while (distance_traveled < instr_distance) {
         if (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
@@ -116,10 +116,10 @@ void motor_forward(uint8_t instr_distance) {
             // Drive for some time
             // Set 50% duty cycle
             pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, right_motor_cycles);
-            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 255 - right_motor_cycles);
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 256 - right_motor_cycles);
 
             pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, left_motor_cycles);
-            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 255 - left_motor_cycles);
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 256 - left_motor_cycles);
 
             pwm_set_enabled(MOTOR1_SLICE_NUM, true);
             pwm_set_enabled(MOTOR2_SLICE_NUM, true);
@@ -206,7 +206,7 @@ void motor_right() {  // 0 Degree Turn
     float distance_traveled = 0;
     int ticks_initial = encoder_left();
 
-    while (distance_traveled < 7.1) {  // Experimental turn value
+    while (distance_traveled < 7.0) {  // Experimental turn value
         // if (!collision_imminent_check(RIGHT, COLL_THRHLD)) {
             // Drive for some time
             // Set 50% duty cycle
@@ -251,7 +251,7 @@ void motor_left() {  // 0 Degree Turn
     float distance_traveled = 0;
     int ticks_initial = encoder_right();
 
-    while (distance_traveled < 7.1) {  // Experimental turn value
+    while (distance_traveled < 7.0) {  // Experimental turn value
         // if (!collision_imminent_check(LEFT, COLL_THRHLD)) {
         // Drive for some time
         // Set 50% duty cycle
