@@ -36,7 +36,7 @@ add_executable(${PROJECT_NAME}
 #        )
 
 # add_executable(${PROJECT_NAME}
-#         rotary_encoder_usb_comm/rotary_encoder.c
+#         rotary_encoder/rotary_encoder.c
 #         )
 
 # Switches UART output to usb
@@ -47,6 +47,6 @@ pico_enable_stdio_uart(${PROJECT_NAME} 0)
 pico_add_extra_outputs(${PROJECT_NAME})
 
 # pull in common dependencies
-# target_link_libraries(${PROJECT_NAME} pico_stdlib)
+# target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_gpio)
 # target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_i2c)
 target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_gpio hardware_pwm hardware_timer)

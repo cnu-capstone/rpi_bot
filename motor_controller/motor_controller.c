@@ -102,8 +102,10 @@ void motor_forward(uint8_t instr_distance) {
     int ticks_initial_right = encoder_right();
     // int ticks_initial_left = encoder_left();
 
-    int right_motor_cycles = 96;
-    int left_motor_cycles = 86;
+    //int right_motor_cycles = 96;
+    //int left_motor_cycles = 86;
+    int right_motor_cycles = 64;
+    int left_motor_cycles = 48;
 
     while (distance_traveled < instr_distance) {
         if (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
@@ -115,14 +117,26 @@ void motor_forward(uint8_t instr_distance) {
             // }
             // Drive for some time
             // Set 50% duty cycle
-            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, right_motor_cycles);
-            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 256 - right_motor_cycles);
+            if (distance_traveled < 1) {
+                pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 96);
+                pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 160);
 
-            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, left_motor_cycles);
-            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 256 - left_motor_cycles);
+                pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 96);
+                pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 160);
 
-            pwm_set_enabled(MOTOR1_SLICE_NUM, true);
-            pwm_set_enabled(MOTOR2_SLICE_NUM, true);
+                pwm_set_enabled(MOTOR1_SLICE_NUM, true);
+                pwm_set_enabled(MOTOR2_SLICE_NUM, true);
+            }
+            else {
+                pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, right_motor_cycles);
+                pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 256 - right_motor_cycles);
+
+                pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, left_motor_cycles);
+                pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 256 - left_motor_cycles);
+
+                pwm_set_enabled(MOTOR1_SLICE_NUM, true);
+                pwm_set_enabled(MOTOR2_SLICE_NUM, true);
+            }
 
             // gpio_put(MOTOR1_ENABLE_PIN, true);
             // gpio_put(MOTOR2_ENABLE_PIN, true);
@@ -144,6 +158,7 @@ void motor_forward(uint8_t instr_distance) {
             ticks_initial_right = ticks_final_right;  // Setup calculation for next iteration
             // ticks_initial_left = ticks_final_left;
             distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
+            printf("Distance: %f \n", distance_traveled);
         }
         else {
             motor_stall();
@@ -251,7 +266,7 @@ void motor_left() {  // 0 Degree Turn
     float distance_traveled = 0;
     int ticks_initial = encoder_right();
 
-    while (distance_traveled < 4.3) {  // Experimental turn value
+    while (distance_traveled < 7.6) {  // Experimental turn value
         // if (!collision_imminent_check(LEFT, COLL_THRHLD)) {
         // Drive for some time
         // Set 50% duty cycle
@@ -287,6 +302,21 @@ void motor_left() {  // 0 Degree Turn
 }
 
 void motor_stall() {
+    //gpio_put(MOTOR1_POS_PIN, false);
+    //gpio_put(MOTOR1_NEG_PIN, true);
+    //gpio_put(MOTOR2_POS_PIN, false);
+    //gpio_put(MOTOR2_NEG_PIN, true);
+    
+    //pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 10);
+    //pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 245);
+    //pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 10);
+    //pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 245);
+
+    //pwm_set_enabled(MOTOR1_SLICE_NUM, true);
+    //pwm_set_enabled(MOTOR2_SLICE_NUM, true);
+    
+    //sleep_ms(1);
+    
     pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 0);
     pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 255);
     pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 0);
@@ -349,13 +379,10 @@ int main() {
     stdio_init_all();  // INIT COMM
     pico_init();  // INIT GPIO
 
-    motor_forward(32);
+    motor_forward(26);
+    // motor_forward(6);
     motor_stall();
-    sleep_ms(500);
-
-    motor_forward(6);
-    motor_stall();
-    sleep_ms(500);
+    sleep_ms(1000);
 
     motor_left();
     motor_stall();
@@ -363,13 +390,14 @@ int main() {
 
     motor_forward(32);
     motor_stall();
-    sleep_ms(500);
+    sleep_ms(1000);
 
-    motor_forward(17);
-    motor_stall();
-    sleep_ms(500);
+    //motor_forward(17);
+    //motor_stall();
+    //sleep_ms(500);
 
     motor_right();
+    motor_stall();
 
     motor_right();
     

@@ -75,3 +75,26 @@ int encoder_right() {
 float ticks_to_cm(int num_ticks) {
     return 27.928814548042 * (num_ticks / 1196.0);
 }
+
+//int main() {
+    //stdio_init_all();  // INIT COMM
+    
+    //printf("Starting...\n");
+    
+    //sleep_ms(1000);
+    
+    //int encoder_initial = encoder_right();
+    //int encoder_final = 0;
+    
+    //float distance_traveled = 0.0;
+    
+    //while (distance_traveled < 1000) {
+        //sleep_ms(100);
+        //encoder_final = encoder_right();
+        //distance_traveled += ticks_to_cm(encoder_final - encoder_initial);
+        //encoder_initial = encoder_final;
+        //printf("Distance: %f \n", distance_traveled);
+    //} 
+     
+    //return SUCCESS;
+//}
