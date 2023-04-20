@@ -100,19 +100,19 @@ void motor_forward(uint8_t instr_distance) {
 
     float distance_traveled = 0;
     int ticks_initial_right = encoder_right();
-    int ticks_initial_left = encoder_left();
+    // int ticks_initial_left = encoder_left();
 
     int right_motor_cycles = 96;
-    int left_motor_cycles = 96;
+    int left_motor_cycles = 48;
 
     while (distance_traveled < instr_distance) {
         if (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
-            if (right_motor_cycles > 255) {
-                right_motor_cycles = 255;
-            }
-            if (left_motor_cycles > 255) {
-                left_motor_cycles = 255;
-            }
+            // if (right_motor_cycles > 255) {
+            //     right_motor_cycles = 255;
+            // }
+            // if (left_motor_cycles > 255) {
+            //     left_motor_cycles = 255;
+            // }
             // Drive for some time
             // Set 50% duty cycle
             pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, right_motor_cycles);
@@ -128,31 +128,21 @@ void motor_forward(uint8_t instr_distance) {
             // gpio_put(MOTOR2_ENABLE_PIN, true);
             // Check how far we drove
             int ticks_final_right = encoder_right();
-            int ticks_final_left = encoder_left();
+            // int ticks_final_left = encoder_left();
             // printf("Tick Initial: %i \tTick Final: %i \nTick Delta: %i \n", ticks_initial, ticks_final, ticks_final - ticks_initial);
 
             int ticks_delta_right = ticks_final_right - ticks_initial_right;
-            int ticks_delta_left = ticks_final_left - ticks_initial_left;
+            // int ticks_delta_left = ticks_final_left - ticks_initial_left;
             
-            int ticks_delta_target = (ticks_delta_right + ticks_delta_left) / 2;    
+            // int ticks_delta_target = (ticks_delta_right + ticks_delta_left) / 2;    
 
-            printf("Left: %i\tRight: %i\tAVG: %i\n", ticks_delta_left, ticks_delta_right, ticks_delta_target);        
+            // printf("Left: %i\tRight: %i\tAVG: %i\n", ticks_delta_left, ticks_delta_right, ticks_delta_target);        
 
             float leg_distance_traveled = ticks_to_cm(ticks_final_right - ticks_initial_right);
-
-            if (leg_distance_traveled > 1.0) {
-                if (right_motor_cycles * (ticks_delta_target / ticks_delta_right) > 0) {
-                    right_motor_cycles = right_motor_cycles * (ticks_delta_target / ticks_delta_right);
-                }
-
-                if (left_motor_cycles * (ticks_delta_target / ticks_delta_left) > 0) {
-                    left_motor_cycles = left_motor_cycles * (ticks_delta_target / ticks_delta_left);
-                }
-            }
             
             // printf("Leg of Distance: %f \n", leg_distance_traveled);
             ticks_initial_right = ticks_final_right;  // Setup calculation for next iteration
-            ticks_initial_left = ticks_final_left;
+            // ticks_initial_left = ticks_final_left;
             distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
         }
         else {
@@ -309,60 +299,60 @@ void motor_stall() {
     sleep_ms(100);  // Lowering from 1000 to 100
 }
 
-// int main() {
-//     stdio_init_all();  // INIT COMM
-//     pico_init();  // INIT GPIO
-
-//     char cmd[CMD_LEN];
-
-//     while(1) {
-//         read_stream(cmd);
-
-//         for (int i = 0; i < bit_width; i ++) {
-//             INSTRUCTIONS[i] = cmd[i] == '1';
-//         }
-
-//         uint8_t cmd_duration = 1;
-//         // Calculate distance
-//         for (int i = 3; i < CMD_LEN; i++) {
-//             // int cmd_val = 0;
-//             if (cmd[i] == '1') {
-//                 // cmd_val = 1;
-//                 cmd_duration += pow(2, (CMD_LEN - (i+1)));
-//             }
-//             // cmd_duration += cmd_val * pow(2, (CMD_LEN - (i+1)));
-//         }
-
-//         if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 111
-//             motor_forward(cmd_duration);
-//         }
-//         else if (INSTRUCTIONS[0] && !INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 101
-//             motor_left();
-//         }
-//         else if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && !INSTRUCTIONS[2]) {  // 110
-//             motor_right();
-//         }
-//         else if (!INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 011
-//             motor_reverse(cmd_duration);
-//         }
-//         else {
-//             motor_stall();
-//         }
-//         motor_stall();
-//     }
-
-//     pico_deinit();
-//     return SUCCESS;
-// }
-
 int main() {
     stdio_init_all();  // INIT COMM
     pico_init();  // INIT GPIO
 
-    sleep_ms(10000);
+    char cmd[CMD_LEN];
 
-    motor_forward(32);
+    while(1) {
+        read_stream(cmd);
+
+        for (int i = 0; i < bit_width; i ++) {
+            INSTRUCTIONS[i] = cmd[i] == '1';
+        }
+
+        uint8_t cmd_duration = 1;
+        // Calculate distance
+        for (int i = 3; i < CMD_LEN; i++) {
+            // int cmd_val = 0;
+            if (cmd[i] == '1') {
+                // cmd_val = 1;
+                cmd_duration += pow(2, (CMD_LEN - (i+1)));
+            }
+            // cmd_duration += cmd_val * pow(2, (CMD_LEN - (i+1)));
+        }
+
+        if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 111
+            motor_forward(cmd_duration);
+        }
+        else if (INSTRUCTIONS[0] && !INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 101
+            motor_left();
+        }
+        else if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && !INSTRUCTIONS[2]) {  // 110
+            motor_right();
+        }
+        else if (!INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 011
+            motor_reverse(cmd_duration);
+        }
+        else {
+            motor_stall();
+        }
+        motor_stall();
+    }
 
     pico_deinit();
     return SUCCESS;
 }
+
+// int main() {
+//     stdio_init_all();  // INIT COMM
+//     pico_init();  // INIT GPIO
+
+//     sleep_ms(10000);
+
+//     motor_forward(32);
+
+//     pico_deinit();
+//     return SUCCESS;
+// }
