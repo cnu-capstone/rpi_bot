@@ -2,7 +2,7 @@
 #define MOTOR_CONTROLLER_H
 
 #include <stdio.h>  // COMM STUFF
-#include <math.h>  // For POW function
+#include <math.h>  // For POW and ABS function
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 #include "ultrasonic.h"
@@ -30,9 +30,9 @@ void motor_forward(uint8_t duration);
 
 void motor_reverse(uint8_t duration);
 
-void motor_right(uint8_t duration);
+void motor_right();  // Experimentally determined 90 degree turn
 
-void motor_left(uint8_t duration);
+void motor_left();  // Experimentally determined 90 degree turn
 
 void motor_stall();
 

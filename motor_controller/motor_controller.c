@@ -105,11 +105,11 @@ void motor_forward(uint8_t instr_distance) {
         if (!collision_imminent_check(FORWARD, COLL_THRHLD)) {
             // Drive for some time
             // Set 50% duty cycle
-            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 128);
-            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 128);
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 80);
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 176);
 
-            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 96);
-            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 160);
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 40);
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 226);
 
             pwm_set_enabled(MOTOR1_SLICE_NUM, true);
             pwm_set_enabled(MOTOR2_SLICE_NUM, true);
@@ -144,37 +144,125 @@ void motor_reverse(uint8_t instr_distance) {  // No rear ultrasonic
     gpio_put(MOTOR2_POS_PIN, false);
     gpio_put(MOTOR2_NEG_PIN, true);
     // SET MOTOR STATE TO ON
+
+    float distance_traveled = 0;
+    int ticks_initial = encoder_right();
+
+    while (distance_traveled < instr_distance) {
+        // Drive for some time
+        // Set 50% duty cycle
+        pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 80);
+        pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 176);
+
+        pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 40);
+        pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 226);
+
+        pwm_set_enabled(MOTOR1_SLICE_NUM, true);
+        pwm_set_enabled(MOTOR2_SLICE_NUM, true);
+
+        // gpio_put(MOTOR1_ENABLE_PIN, true);
+        // gpio_put(MOTOR2_ENABLE_PIN, true);
+        // Check how far we drove
+        int ticks_final = encoder_right();
+        float leg_distance_traveled = abs(ticks_to_cm(ticks_final - ticks_initial));
+        ticks_initial = ticks_final;  // Setup calculation for next iteration
+        distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
+        sleep_ms(100);
+    }   
+
     gpio_put(MOTOR1_ENABLE_PIN, true);
     gpio_put(MOTOR2_ENABLE_PIN, true);
     sleep_ms(instr_distance * 1000);
 }
 
-void motor_right(uint8_t instr_distance) {  // 0 Degree Turn
+void motor_right() {  // 0 Degree Turn
     // SET LEFT MOTOR FORWARD and RIGHT MOTOR BACKWARD
     gpio_put(MOTOR2_POS_PIN, true);
     gpio_put(MOTOR2_NEG_PIN, false);
     gpio_put(MOTOR1_POS_PIN, false);
     gpio_put(MOTOR1_NEG_PIN, true);
     // SET MOTOR STATE TO ON
-    while (!collision_imminent_check(RIGHT, COLL_THRHLD)) {
-        gpio_put(MOTOR2_ENABLE_PIN, true);
-        gpio_put(MOTOR1_ENABLE_PIN, true);
-    }
+    float distance_traveled = 0;
+    int ticks_initial = encoder_right();
+
+    while (distance_traveled < 0.1) {  // Experimental turn value
+        if (!collision_imminent_check(RIGHT, COLL_THRHLD)) {
+            // Drive for some time
+            // Set 50% duty cycle
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 80);
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 176);
+
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 40);
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 226);
+
+            pwm_set_enabled(MOTOR1_SLICE_NUM, true);
+            pwm_set_enabled(MOTOR2_SLICE_NUM, true);
+
+            // gpio_put(MOTOR1_ENABLE_PIN, true);
+            // gpio_put(MOTOR2_ENABLE_PIN, true);
+            // Check how far we drove
+            int ticks_final = encoder_right();
+            float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial);
+            ticks_initial = ticks_final;  // Setup calculation for next iteration
+            distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
+        }
+        else {
+            motor_stall();
+        }
+        // printf("Distance Traveled: %f \n", distance_traveled);
+        sleep_ms(100);
+    }   
+    
+    // while (!collision_imminent_check(RIGHT, COLL_THRHLD)) {
+    //     gpio_put(MOTOR2_ENABLE_PIN, true);
+    //     gpio_put(MOTOR1_ENABLE_PIN, true);
+    // }
     // sleep_ms(900);
 }
 
-void motor_left(uint8_t instr_distance) {  // 0 Degree Turn
+void motor_left() {  // 0 Degree Turn
     // SET RIGHT MOTOR FORWARD and LEFT MOTOR BACKWARD
     gpio_put(MOTOR2_POS_PIN, false);
     gpio_put(MOTOR2_NEG_PIN, true);
     gpio_put(MOTOR1_POS_PIN, true);
     gpio_put(MOTOR1_NEG_PIN, false);
     // SET MOTOR STATE TO ON
-    while (!collision_imminent_check(LEFT, COLL_THRHLD)) {
-        gpio_put(MOTOR2_ENABLE_PIN, true);
-        gpio_put(MOTOR1_ENABLE_PIN, true);
-    }
-    sleep_ms(900);
+    float distance_traveled = 0;
+    int ticks_initial = encoder_right();
+
+    while (distance_traveled < 0.1) {  // Experimental turn value
+        if (!collision_imminent_check(LEFT, COLL_THRHLD)) {
+            // Drive for some time
+            // Set 50% duty cycle
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 80);
+            pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_B, 176);
+
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_B, 40);
+            pwm_set_chan_level(MOTOR2_SLICE_NUM, PWM_CHAN_A, 226);
+
+            pwm_set_enabled(MOTOR1_SLICE_NUM, true);
+            pwm_set_enabled(MOTOR2_SLICE_NUM, true);
+
+            // gpio_put(MOTOR1_ENABLE_PIN, true);
+            // gpio_put(MOTOR2_ENABLE_PIN, true);
+            // Check how far we drove
+            int ticks_final = encoder_right();
+            float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial);
+            ticks_initial = ticks_final;  // Setup calculation for next iteration
+            distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
+        }
+        else {
+            motor_stall();
+        }
+        // printf("Distance Traveled: %f \n", distance_traveled);
+        sleep_ms(100);
+    } 
+
+    // while (!collision_imminent_check(LEFT, COLL_THRHLD)) {
+    //     gpio_put(MOTOR2_ENABLE_PIN, true);
+    //     gpio_put(MOTOR1_ENABLE_PIN, true);
+    // }
+    // sleep_ms(900);
 }
 
 void motor_stall() {
@@ -193,11 +281,6 @@ void motor_stall() {
 int main() {
     stdio_init_all();  // INIT COMM
     pico_init();  // INIT GPIO
-
-    // sleep_ms(5000);
-
-    // printf("Motor1 Slice: %i \n", MOTOR1_SLICE_NUM);
-    // printf("Motor2 Slice: %i \n", MOTOR2_SLICE_NUM);
 
     char cmd[CMD_LEN];
 
@@ -223,10 +306,10 @@ int main() {
             motor_forward(cmd_duration);
         }
         else if (INSTRUCTIONS[0] && !INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 101
-            motor_left(cmd_duration);
+            motor_left();
         }
         else if (INSTRUCTIONS[0] && INSTRUCTIONS[1] && !INSTRUCTIONS[2]) {  // 110
-            motor_right(cmd_duration);
+            motor_right();
         }
         else if (!INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 011
             motor_reverse(cmd_duration);
