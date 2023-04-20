@@ -164,7 +164,7 @@ void motor_reverse(uint8_t instr_distance) {  // No rear ultrasonic
         // gpio_put(MOTOR2_ENABLE_PIN, true);
         // Check how far we drove
         int ticks_final = encoder_right();
-        float leg_distance_traveled = abs(ticks_to_cm(ticks_final - ticks_initial));
+        float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial)/-1.0;
         ticks_initial = ticks_final;  // Setup calculation for next iteration
         distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
         sleep_ms(100);

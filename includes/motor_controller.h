@@ -2,7 +2,7 @@
 #define MOTOR_CONTROLLER_H
 
 #include <stdio.h>  // COMM STUFF
-#include <math.h>  // For POW and ABS function
+#include <math.h>  // For POW function
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 #include "ultrasonic.h"
