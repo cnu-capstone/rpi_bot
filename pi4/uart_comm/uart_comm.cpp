@@ -83,22 +83,22 @@ int main() {
 	std::string msg_string;
 
 	// AWS dropbox file
-	// std::string filepath = "/home/pi/Desktop/AWS/location.txt";
+	std::string filepath = "/home/pi/Desktop/AWS/location.txt";
 	
 	// FileIO fio(filepath);
 	
 	while (1) {
-		std::cout<<"Please enter command: ";
-		std::cin>>msg_string;
-		std::cout<<std::endl;
-		// FileIO fio(filepath);
+		// std::cout<<"Please enter command: ";
+		// std::cin>>msg_string;
+		// std::cout<<std::endl;
+		FileIO fio(filepath);
 
-		// bool read_success = fio.read(msg_string);
+		bool read_success = fio.read(msg_string);
 
-		// std::cout<<msg_string<<std::endl;
+		std::cout<<msg_string<<std::endl;
 
 		if (std::strcmp(msg_string.c_str(), "Forward") == 0) {  // If string is "Forward"
-			msg_string = "11111111";
+			msg_string = "11100001";
 		}
 		else if (std::strcmp(msg_string.c_str(), "Left") == 0) {  // If string is "Left"
 			msg_string = "10100001";

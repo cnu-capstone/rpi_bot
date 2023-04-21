@@ -75,48 +75,59 @@ float ultrasonic_left() {
     gpio_init(ECHO_PIN_LEFT);
     gpio_set_dir(ECHO_PIN_LEFT, GPIO_IN);
 
-    gpio_put(TRIGGER_PIN_LEFT, 0);  // Make sure trigger pin is low
-    gpio_set_irq_enabled_with_callback(ECHO_PIN_LEFT, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_LEFT);
+    uint32_t pulse_duration_LEFT = 0;
 
-    // Send a 10us pulse to trigger the sensor
-    gpio_put(TRIGGER_PIN_LEFT, 1);
-    busy_wait_us_32(5);
-    gpio_put(TRIGGER_PIN_LEFT, 0);
+    for (int i = 0; i < 5; i++) {
+        gpio_put(TRIGGER_PIN_LEFT, 0);  // Make sure trigger pin is low
+        gpio_set_irq_enabled_with_callback(ECHO_PIN_LEFT, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_LEFT);
 
-    // Wait for echo pulse to be received
-    //#echo_received_RIGHT;
-    // Calculate duration of echo pulse
-    uint32_t pulse_duration_LEFT = end_time_LEFT - start_time_LEFT;
+        // Send a 10us pulse to trigger the sensor
+        gpio_put(TRIGGER_PIN_LEFT, 1);
+        busy_wait_us_32(5);
+        gpio_put(TRIGGER_PIN_LEFT, 0);
+
+        // Wait for echo pulse to be received
+        //#echo_received_RIGHT;
+        // Calculate duration of echo pulse
+        pulse_duration_LEFT += end_time_LEFT - start_time_LEFT;
+        sleep_ms(2);
+    }
 
     // Calculate distance in centimeters
-    float distance_cm_LEFT = pulse_duration_LEFT * 0.0343 / 2;
+    float distance_cm_LEFT = (pulse_duration_LEFT/5) * 0.0343 / 2;
 
     // printf("Distance left: %.2f cm\n", distance_cm_LEFT);
     return distance_cm_LEFT;
 }
 
 float ultrasonic_right() {
+    sleep_ms(5);
     // printf("ultrasonic_right()");  // Use printf whenever you need std out
     gpio_init(TRIGGER_PIN_RIGHT);
     gpio_set_dir(TRIGGER_PIN_RIGHT, GPIO_OUT);
     gpio_init(ECHO_PIN_RIGHT);
     gpio_set_dir(ECHO_PIN_RIGHT, GPIO_IN);
 
-    gpio_put(TRIGGER_PIN_RIGHT, 0);  // Make sure trigger pin is low
-    gpio_set_irq_enabled_with_callback(ECHO_PIN_RIGHT, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_RIGHT);
+    uint32_t pulse_duration_RIGHT = 0;
 
-    // Send a 10us pulse to trigger the sensor
-    gpio_put(TRIGGER_PIN_RIGHT, 1);
-    busy_wait_us_32(10);
-    gpio_put(TRIGGER_PIN_RIGHT, 0);
+    for (int i = 0; i < 5; i++) {
+        gpio_put(TRIGGER_PIN_RIGHT, 0);  // Make sure trigger pin is low
+        gpio_set_irq_enabled_with_callback(ECHO_PIN_RIGHT, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_RIGHT);
 
-    // Wait for echo pulse to be received
-    //#echo_received_RIGHT;
-    // Calculate duration of echo pulse
-    uint32_t pulse_duration_RIGHT = end_time_RIGHT - start_time_RIGHT;
+        // Send a 10us pulse to trigger the sensor
+        gpio_put(TRIGGER_PIN_RIGHT, 1);
+        busy_wait_us_32(10);
+        gpio_put(TRIGGER_PIN_RIGHT, 0);
+
+        // Wait for echo pulse to be received
+        //#echo_received_RIGHT;
+        // Calculate duration of echo pulse
+        pulse_duration_RIGHT += end_time_RIGHT - start_time_RIGHT;
+        sleep_ms(2);
+    }
 
     // Calculate distance in centimeters
-    float distance_cm_RIGHT = pulse_duration_RIGHT * 0.0343 / 2;
+    float distance_cm_RIGHT = (pulse_duration_RIGHT/5) * 0.0343 / 2;
 
     // printf("Distance right: %.2f cm\n", distance_cm_RIGHT);
 
@@ -221,7 +232,10 @@ bool collision_imminent_check(enum DIR dir, float threshold) {
     float measured_dist;  // Distance in cm returned from sensor funtion call.
     switch (dir) {
     case FORWARD:
-        measured_dist = (ultrasonic_forward_a() + ultrasonic_forward_b()) / 2;
+        measured_dist = ultrasonic_forward_b();
+        if (ultrasonic_forward_a() <= ultrasonic_forward_b()) {
+            measured_dist = ultrasonic_forward_a();
+        }
         break;
     case LEFT:
         measured_dist = ultrasonic_left();
