@@ -266,7 +266,7 @@ void motor_left() {  // 0 Degree Turn
     float distance_traveled = 0;
     int ticks_initial = encoder_right();
 
-    while (distance_traveled < 7.6) {  // Experimental turn value
+    while (distance_traveled < 8.0) {  // Experimental turn value
         // if (!collision_imminent_check(LEFT, COLL_THRHLD)) {
         // Drive for some time
         // Set 50% duty cycle
@@ -378,6 +378,8 @@ void motor_stall() {
 int main() {
     stdio_init_all();  // INIT COMM
     pico_init();  // INIT GPIO
+    
+    sleep_ms(1000);
 
     motor_forward(26);
     // motor_forward(6);
