@@ -23,6 +23,8 @@ void read_stream(char* buff) {
     char instr[CMD_LEN];
 
     // struct pollfd stdin_poll = {STDIN_FILENO, POLLIN|POLLPRI};  // Connection to stdin file descriptor defining instream signal
+    // if (poll(&stdin_poll, 1, 1000)) {  // Check stdin for data, timeout after 1 second
+    // }
     // scanf("%8s", instr);
     // printf("Data received: %s\n", instr);
 
@@ -39,20 +41,12 @@ void read_stream(char* buff) {
     tv.tv_usec = 0;
 
     num_readable = select(fd_stdin + 1, &readfds, NULL, NULL, &tv);
-    if (num_readable == -1) {
-        return;
-    }
-    if (num_readable == 0) {
-        return;
-    }
-    else {
-    // if (poll(&stdin_poll, 1, 1000)) {  // Check stdin for data, timeout after 1 second
+    if (num_readable == 1) {
         while(strcmp(instr, stall_instr) != 0) {  // While we don't get a stall
             scanf("%8s", instr);
             enqueue(instr, buff);
             printf("Data received: %s\n", instr);
         }
-    // }
     }
 }
 
