@@ -22,14 +22,17 @@ const char stall_instr[CMD_LEN] = "10000000";
 void read_stream(char* buff) {
     char instr[CMD_LEN];
 
+    struct pollfd stdin_poll = {STDIN_FILENO, POLLIN|POLLPRI};  // Connection to stdin file descriptor defining instream signal
     // scanf("%8s", instr);
     // printf("Data received: %s\n", instr);
 
-    while(strcmp(instr, stall_instr) != 0) {
-        scanf("%8s", instr);
-        enqueue(instr, buff);
-        printf("Data received: %s\n", instr);
-    }    
+    if (poll(&stdin_poll, 1, 1000)) {  // Check stdin for data, timeout after 1 second
+        while(strcmp(instr, stall_instr) != 0) {  // While we don't get a stall
+            scanf("%8s", instr);
+            enqueue(instr, buff);
+            printf("Data received: %s\n", instr);
+        }
+    }
 }
 
 void enqueue(char* data, char* buff) {
@@ -41,8 +44,8 @@ void enqueue(char* data, char* buff) {
     }
 }
 
-char* dequeue(char* buff) {
-    char instr[CMD_LEN];
+char* dequeue(char* instr, char* buff) {
+    // char instr[CMD_LEN];
 
     if (buff) {  // If buff is a valid pointer
         for (int i = 0; i < CMD_LEN; i++) {  // Copy first 8 (CMD_LEN) char into instr
@@ -51,11 +54,10 @@ char* dequeue(char* buff) {
         for (int i = CMD_LEN; i < BUFFER_SIZE; i++) {  // Shift values back 8 (CMD_LEN) spaces
             if (buff+i) {
                 *(buff+(i - CMD_LEN)) = *(buff+i);
-                buffer_tail--;  // Decrement tail
             } 
         }
-        // // Decrement tail
-        // buffer_tail -= CMD_LEN;
+        // Decrement tail
+        buffer_tail -= CMD_LEN;
         // Clear last 8 (CMD_LEN)
         memset(buff[buffer_tail], 0, CMD_LEN);
     }
@@ -313,6 +315,15 @@ int main() {
 
     while(1) {
         // read_stream(cmd);
+        read_stream(buffer);
+
+        // Check if data is in buffer (tail is far enough back)
+        if (buffer_tail >= CMD_LEN) {
+            dequeue(cmd, buffer);
+        }
+        else {  // No instructions to run
+            continue;
+        }
 
         for (int i = 0; i < bit_width; i ++) {
             INSTRUCTIONS[i] = cmd[i] == '1';
@@ -340,6 +351,10 @@ int main() {
         }
         else if (!INSTRUCTIONS[0] && INSTRUCTIONS[1] && INSTRUCTIONS[2]) {  // 011
             motor_reverse(cmd_duration);
+        }
+        else if (INSTRUCTIONS[0] && !INSTRUCTIONS[1] && !INSTRUCTIONS[2]) {  // 100
+            motor_stall();
+            continue;  // Done with set, re-iterate loop
         }
         else {
             motor_stall();

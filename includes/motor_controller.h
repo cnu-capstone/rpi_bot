@@ -5,6 +5,8 @@
 #include <math.h>  // For POW function
 #include <stdlib.h>  // For ABS function
 #include <string.h>  // For string and strcmp
+#include <poll.h>  // For poll function
+#include <unistd.h>  // For STDIN file descriptor
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 #include "ultrasonic.h"
@@ -24,7 +26,7 @@ void read_stream(char* buff);
 
 void enqueue(char* data, char* buff);
 
-char* dequeue(char* buff);
+char* dequeue(char* instr, char* buff);
 
 // MOTOR CODE
 void pico_init();
