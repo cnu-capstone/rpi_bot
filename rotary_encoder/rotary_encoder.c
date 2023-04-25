@@ -53,6 +53,8 @@ int encoder_left() {
 
     gpio_set_irq_enabled_with_callback(ENCODER_PIN_A, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &encoder_isr_A);  // Enable interrupt on encoder input A
 
+    printf("Left Encoder Count: %i \n", encoder_count);
+
     return encoder_count;
 }
 
@@ -67,7 +69,7 @@ int encoder_right() {
     
     gpio_set_irq_enabled_with_callback(ENCODER_PIN_A_RIGHT, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &encoder_isr_A_RIGHT);  // Enable interrupt on encoder input A
     
-    // printf("Right Encoder Count: %i \n", encoder_count_RIGHT);
+    printf("Right Encoder Count: %i \n", encoder_count_RIGHT);
 
     return encoder_count_RIGHT;
 }

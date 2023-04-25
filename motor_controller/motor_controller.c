@@ -16,13 +16,13 @@ uint MOTOR2_SLICE_NUM;
 
 size_t buffer_tail = 0;
 
-const char stall_instr[CMD_LEN] = "10000000";
+const char stall_instr[] = {'1', '0', '0', '0', '0', '0', '0', '0'};
 
 // COMM PORT CODE
 void read_stream(char* buff) {
     char instr[CMD_LEN];
 
-    while(strcmp(instr, stall_instr) != 0) {  // While we don't get a stall
+    while(strncmp(instr, stall_instr, CMD_LEN) != 0) {  // While we don't get a stall
         printf("READY TO READ\n");  // PICO sends a ready to synchronize with the Pi
         scanf("%8s", instr);  // Pi knows PICO is ready (and doesn't have instructions) so we are free to wait (block) until we get data.
         enqueue(instr, buff);
@@ -251,7 +251,7 @@ void motor_right() {  // 0 Degree Turn
             float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial);
             ticks_initial = ticks_final;  // Setup calculation for next iteration
             distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
-        // sleep_ms(100);
+            sleep_ms(100);
     }
 }
 
@@ -285,6 +285,7 @@ void motor_left() {  // 0 Degree Turn
         float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial);
         ticks_initial = ticks_final;  // Setup calculation for next iteration
         distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
+        sleep_ms(100);
     } 
 }
 
@@ -303,23 +304,28 @@ void motor_stall() {
 
 int main() {
     stdio_init_all();  // INIT COMM
+    sleep_ms(1000);
+    printf("Finished init\n");
+
     pico_init();  // INIT GPIO
+
+    // printf("Finished init");
 
     char cmd[CMD_LEN];
     char buffer[BUFFER_SIZE];
 
-    printf("Made it through init");
+    // printf("Made it through init");
 
     while(1) {
         // read_stream(cmd);
         // read_stream(buffer);  // 312: Checks the stdin stream every loop iteration (CHECK 319)
 
         // Check if data is in buffer (tail is far enough back)
-        if (buffer_tail >= CMD_LEN) {
+        if (buffer_tail >= 8) {
             dequeue(cmd, buffer);
         }
         else {  // No instructions to run
-            printf("Calling read_stream");
+            printf("Calling read_stream\n");
             read_stream(buffer);  // 319: Checks the stdin stream ONLY when we are out of instructions to run
             continue;
         }
