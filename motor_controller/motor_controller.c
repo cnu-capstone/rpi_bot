@@ -308,6 +308,8 @@ int main() {
     char cmd[CMD_LEN];
     char buffer[BUFFER_SIZE];
 
+    printf("Made it through init");
+
     while(1) {
         // read_stream(cmd);
         // read_stream(buffer);  // 312: Checks the stdin stream every loop iteration (CHECK 319)
@@ -317,6 +319,7 @@ int main() {
             dequeue(cmd, buffer);
         }
         else {  // No instructions to run
+            printf("Calling read_stream");
             read_stream(buffer);  // 319: Checks the stdin stream ONLY when we are out of instructions to run
             continue;
         }
