@@ -22,31 +22,11 @@ const char stall_instr[CMD_LEN] = "10000000";
 void read_stream(char* buff) {
     char instr[CMD_LEN];
 
-    // struct pollfd stdin_poll = {STDIN_FILENO, POLLIN|POLLPRI};  // Connection to stdin file descriptor defining instream signal
-    // if (poll(&stdin_poll, 1, 1000)) {  // Check stdin for data, timeout after 1 second
-    // }
-    // scanf("%8s", instr);
-    // printf("Data received: %s\n", instr);
-
-    // Utilizing select since poll is unusable
-    fd_set readfds;
-    int num_readable;
-    struct timeval tv;
-    int fd_stdin = fileno(stdin);
-
-    FD_ZERO(&readfds);
-    FD_SET(fileno(stdin), &readfds);
-
-    tv.tv_sec = 1;
-    tv.tv_usec = 0;
-
-    num_readable = select(fd_stdin + 1, &readfds, NULL, NULL, &tv);
-    if (num_readable == 1) {
-        while(strcmp(instr, stall_instr) != 0) {  // While we don't get a stall
-            scanf("%8s", instr);
-            enqueue(instr, buff);
-            printf("Data received: %s\n", instr);
-        }
+    while(strcmp(instr, stall_instr) != 0) {  // While we don't get a stall
+        printf("READY TO READ\n");  // PICO sends a ready to synchronize with the Pi
+        scanf("%8s", instr);  // Pi knows PICO is ready (and doesn't have instructions) so we are free to wait (block) until we get data.
+        enqueue(instr, buff);
+        printf("Data received: %s\n", instr);
     }
 }
 
@@ -330,13 +310,14 @@ int main() {
 
     while(1) {
         // read_stream(cmd);
-        read_stream(buffer);
+        // read_stream(buffer);  // 312: Checks the stdin stream every loop iteration (CHECK 319)
 
         // Check if data is in buffer (tail is far enough back)
         if (buffer_tail >= CMD_LEN) {
             dequeue(cmd, buffer);
         }
         else {  // No instructions to run
+            read_stream(buffer);  // 319: Checks the stdin stream ONLY when we are out of instructions to run
             continue;
         }
 
