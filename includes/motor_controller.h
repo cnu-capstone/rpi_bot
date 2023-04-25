@@ -4,6 +4,7 @@
 #include <stdio.h>  // COMM STUFF
 #include <math.h>  // For POW function
 #include <stdlib.h>  // For ABS function
+#include <string.h>  // For string and strcmp
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
 #include "ultrasonic.h"
@@ -16,11 +17,14 @@
 
 #define bit_width 3
 #define CMD_LEN 8
+#define BUFFER_SIZE 1024
 
 // COMM PORT CODE
 void read_stream(char* buff);
 
 void enqueue(char* data, char* buff);
+
+char* dequeue(char* buff);
 
 // MOTOR CODE
 void pico_init();

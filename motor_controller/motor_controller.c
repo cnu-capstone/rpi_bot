@@ -14,17 +14,52 @@ const uint LED_PIN = 22;  // Uncomment for PICO W usage
 uint MOTOR1_SLICE_NUM;
 uint MOTOR2_SLICE_NUM;
 
+size_t buffer_tail = 0;
+
+const char stall_instr[CMD_LEN] = "10000000";
+
 // COMM PORT CODE
 void read_stream(char* buff) {
-    scanf("%8s", buff);
+    char instr[CMD_LEN];
 
-    printf("Data received: %s\n", buff);
+    // scanf("%8s", instr);
+    // printf("Data received: %s\n", instr);
+
+    while(strcmp(instr, stall_instr) != 0) {
+        scanf("%8s", instr);
+        enqueue(instr, buff);
+        printf("Data received: %s\n", instr);
+    }    
 }
 
 void enqueue(char* data, char* buff) {
-    for (int i = 0; i < CMD_LEN; i++) {
-        *(buff++) = *(data+i);  // Dereference data at position i and store into buff and increment buff position
+    if (buffer_tail <= BUFFER_SIZE - CMD_LEN) {  // Buffer could overflow but instr will be dropped if so
+        for (int i = 0; i < CMD_LEN; i++) {
+            *(buff+buffer_tail) = *(data+i);  // Dereference data at position i and store into buff and increment buff position
+            buffer_tail++;  // Increment tail
+        }
     }
+}
+
+char* dequeue(char* buff) {
+    char instr[CMD_LEN];
+
+    if (buff) {  // If buff is a valid pointer
+        for (int i = 0; i < CMD_LEN; i++) {  // Copy first 8 (CMD_LEN) char into instr
+            *(instr+i) = *(buff+i);
+        }
+        for (int i = CMD_LEN; i < BUFFER_SIZE; i++) {  // Shift values back 8 (CMD_LEN) spaces
+            if (buff+i) {
+                *(buff+(i - CMD_LEN)) = *(buff+i);
+                buffer_tail--;  // Decrement tail
+            } 
+        }
+        // // Decrement tail
+        // buffer_tail -= CMD_LEN;
+        // Clear last 8 (CMD_LEN)
+        memset(buff[buffer_tail], 0, CMD_LEN);
+    }
+    return instr;
 }
 
 // MOTOR CODE
@@ -274,9 +309,10 @@ int main() {
     pico_init();  // INIT GPIO
 
     char cmd[CMD_LEN];
+    char buffer[BUFFER_SIZE];
 
     while(1) {
-        read_stream(cmd);
+        // read_stream(cmd);
 
         for (int i = 0; i < bit_width; i ++) {
             INSTRUCTIONS[i] = cmd[i] == '1';
