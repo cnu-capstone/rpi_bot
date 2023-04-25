@@ -6,7 +6,9 @@
 #include <stdlib.h>  // For ABS function
 #include <string.h>  // For string and strcmp
 // #include <sys/poll.h>  // For poll function
-#include <sys/select.h>
+#include <sys/select.h>  // For select function
+#include <sys/time.h>  // For timeval struct
+#include <sys/types.h>
 #include <unistd.h>  // For STDIN file descriptor
 #include "pico/stdlib.h"
 #include "hardware/pwm.h"
