@@ -285,7 +285,7 @@ void motor_left() {  // 0 Degree Turn
         float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial);
         ticks_initial = ticks_final;  // Setup calculation for next iteration
         distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
-        sleep_ms(100);
+        sleep_ms(200);
     } 
 }
 
@@ -325,6 +325,7 @@ int main() {
             dequeue(cmd, buffer);
         }
         else {  // No instructions to run
+            sleep_ms(1000);  // It zooms, needs to zoom less
             printf("Calling read_stream\n");
             read_stream(buffer);  // 319: Checks the stdin stream ONLY when we are out of instructions to run
             continue;
