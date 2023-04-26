@@ -92,6 +92,7 @@ float ultrasonic_left() {
     float distance_cm_LEFT = pulse_duration_LEFT * 0.0343 / 2;
 
     // printf("Distance left: %.2f cm\n", distance_cm_LEFT);
+    printf("\nU_L: %f",distance_cm_LEFT);
     return distance_cm_LEFT;
 }
 
@@ -121,11 +122,12 @@ float ultrasonic_right() {
     // printf("Distance right: %.2f cm\n", distance_cm_RIGHT);
 
     // sleep_ms(500);  // Delay for 500ms
-
+    printf("/nU_R: %f",distance_cm_RIGHT);
     return distance_cm_RIGHT;
 }
 
 float ultrasonic_forward_a() {
+    //printf('ultra_a');
     sleep_ms(5);
     // printf("ultrasonic_forward_a()");  // Use printf whenever you need std out
     gpio_init(TRIGGER_PIN_FORWARD_A);
@@ -146,7 +148,7 @@ float ultrasonic_forward_a() {
     // Calculate duration of echo pulse
     uint32_t pulse_duration_FORWARD_A = 0;
 
-    for(int i = 0; i < 10; i++) {
+    //for(int i = 0; i < 5; i++) {
         gpio_put(TRIGGER_PIN_FORWARD_A, 0);  // Make sure trigger pin is low
         gpio_set_irq_enabled_with_callback(ECHO_PIN_FORWARD_A, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_FORWARD_A);
 
@@ -158,14 +160,15 @@ float ultrasonic_forward_a() {
         pulse_duration_FORWARD_A += end_time_FORWARD_A - start_time_FORWARD_A;
 
         sleep_ms(2);
-    }
+   // }
 
     // Calculate distance in centimeters
-    float distance_cm_FORWARD_A = (pulse_duration_FORWARD_A/10)* 0.0343 / 2;
+    float distance_cm_FORWARD_A = (pulse_duration_FORWARD_A)* 0.0343 / 2;
 
     // printf("Distance forward a: %.2f cm\n", distance_cm_FORWARD_A);
 
     // sleep_ms(500);  // Delay for 500ms
+    printf("F_A: %f",distance_cm_FORWARD_A);
 
     return distance_cm_FORWARD_A;
 }
@@ -194,7 +197,7 @@ float ultrasonic_forward_b() {
 
     // Calculate distance in centimeters
 
-    for (int i = 0; i < 10; i++) {
+    //for (int i = 0; i < 10; i++) {
         gpio_put(TRIGGER_PIN_FORWARD_B, 0);  // Make sure trigger pin is low
         gpio_set_irq_enabled_with_callback(ECHO_PIN_FORWARD_B, GPIO_IRQ_EDGE_FALL | GPIO_IRQ_EDGE_RISE, true, &echo_isr_FORWARD_B);
 
@@ -206,14 +209,14 @@ float ultrasonic_forward_b() {
         pulse_duration_FORWARD_B += end_time_FORWARD_B - start_time_FORWARD_B;
 
         sleep_ms(2);
-    }
+    //}
 
-    float distance_cm_FORWARD_B = (pulse_duration_FORWARD_B/10)* 0.0343 / 2;
+    float distance_cm_FORWARD_B = (pulse_duration_FORWARD_B)* 0.0343 / 2;
 
     // printf("Distance forward b: %.2f cm\n", distance_cm_FORWARD_B);
 
     // sleep_ms(500);  // Delay for 500ms
-	
+	printf("U_FB: %f",distance_cm_FORWARD_B);
     return distance_cm_FORWARD_B;
 }
 
@@ -221,7 +224,9 @@ bool collision_imminent_check(enum DIR dir, float threshold) {
     float measured_dist;  // Distance in cm returned from sensor funtion call.
     switch (dir) {
     case FORWARD:
+        //measured_dist = ultrasonic_forward_a(); 
         measured_dist = (ultrasonic_forward_a() + ultrasonic_forward_b()) / 2;
+
         break;
     case LEFT:
         measured_dist = ultrasonic_left();

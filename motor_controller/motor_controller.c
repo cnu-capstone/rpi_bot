@@ -100,6 +100,7 @@ void motor_forward(uint8_t instr_distance) {
 
     float distance_traveled = 0;
     int ticks_initial_right = encoder_right();
+    //int ticks_initial_right = 0;
     // int ticks_initial_left = encoder_left();
 
     //int right_motor_cycles = 96;
@@ -142,6 +143,7 @@ void motor_forward(uint8_t instr_distance) {
             // gpio_put(MOTOR2_ENABLE_PIN, true);
             // Check how far we drove
             int ticks_final_right = encoder_right();
+            //int ticks_final_right = 20;
             // int ticks_final_left = encoder_left();
             // printf("Tick Initial: %i \tTick Final: %i \nTick Delta: %i \n", ticks_initial, ticks_final, ticks_final - ticks_initial);
 
@@ -265,6 +267,7 @@ void motor_left() {  // 0 Degree Turn
     // SET MOTOR STATE TO ON
     float distance_traveled = 0;
     int ticks_initial = encoder_right();
+    
 
     while (distance_traveled < 8.0) {  // Experimental turn value
         // if (!collision_imminent_check(LEFT, COLL_THRHLD)) {
@@ -283,6 +286,7 @@ void motor_left() {  // 0 Degree Turn
         // gpio_put(MOTOR2_ENABLE_PIN, true);
         // Check how far we drove
         int ticks_final = encoder_right();
+        //int ticks_final = 20;
         float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial);
         ticks_initial = ticks_final;  // Setup calculation for next iteration
         distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
@@ -381,8 +385,8 @@ int main() {
     
     sleep_ms(1000);
 
+    //motor_forward(56);
     motor_forward(26);
-    // motor_forward(6);
     motor_stall();
     sleep_ms(1000);
 
