@@ -160,13 +160,13 @@ void motor_forward(uint8_t instr_distance) {
             ticks_initial_right = ticks_final_right;  // Setup calculation for next iteration
             // ticks_initial_left = ticks_final_left;
             distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
-            printf("Distance: %f \n", distance_traveled);
+            //printf("Distance: %f \n", distance_traveled);
         }
         else {
             motor_stall();
         }
         // printf("Distance Traveled: %f \n", distance_traveled);
-        sleep_ms(100);
+        sleep_ms(200);
     }     
 
     // while (!collision_imminent_check(FORWARD, COLL_THRHLD)) {  // Drive until there is a collision detected
@@ -224,7 +224,7 @@ void motor_right() {  // 0 Degree Turn
     int ticks_initial = encoder_left();
 
     while (distance_traveled < 4.3) {  // Experimental turn value
-        // if (!collision_imminent_check(RIGHT, COLL_THRHLD)) {
+        if (!collision_imminent_check(RIGHT, COLL_THRHLD)) {
             // Drive for some time
             // Set 50% duty cycle
             pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 0);
@@ -243,10 +243,10 @@ void motor_right() {  // 0 Degree Turn
             float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial);
             ticks_initial = ticks_final;  // Setup calculation for next iteration
             distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
-        // }
-        // else {
-        //     motor_stall();
-        // }
+        }
+        else {
+            motor_stall();
+        }
         // printf("Distance Traveled: %f \n", distance_traveled);
         sleep_ms(100);
     }   
@@ -269,8 +269,8 @@ void motor_left() {  // 0 Degree Turn
     int ticks_initial = encoder_right();
     
 
-    while (distance_traveled < 8.0) {  // Experimental turn value
-        // if (!collision_imminent_check(LEFT, COLL_THRHLD)) {
+    while (distance_traveled < 10.0) {  // Experimental turn value
+        if (!collision_imminent_check(LEFT, COLL_THRHLD)) {
         // Drive for some time
         // Set 50% duty cycle
         pwm_set_chan_level(MOTOR1_SLICE_NUM, PWM_CHAN_A, 255);
@@ -290,12 +290,12 @@ void motor_left() {  // 0 Degree Turn
         float leg_distance_traveled = ticks_to_cm(ticks_final - ticks_initial);
         ticks_initial = ticks_final;  // Setup calculation for next iteration
         distance_traveled += leg_distance_traveled / 10;  // Centimeters to Decimeters
-        // }
-        // else {
-        //     motor_stall();
-        // }
+        }
+        else {
+            motor_stall();
+        }
         // printf("Distance Traveled: %f \n", distance_traveled);
-        // sleep_ms(100);
+        sleep_ms(100);
     } 
 
     // while (!collision_imminent_check(LEFT, COLL_THRHLD)) {
@@ -385,8 +385,8 @@ int main() {
     
     sleep_ms(1000);
 
-    //motor_forward(56);
-    motor_forward(26);
+    motor_forward(38);
+    //motor_forward(26);
     motor_stall();
     sleep_ms(1000);
 

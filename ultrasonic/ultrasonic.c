@@ -92,7 +92,7 @@ float ultrasonic_left() {
     float distance_cm_LEFT = pulse_duration_LEFT * 0.0343 / 2;
 
     // printf("Distance left: %.2f cm\n", distance_cm_LEFT);
-    printf("\nU_L: %f",distance_cm_LEFT);
+    //printf("\nU_L: %f",distance_cm_LEFT);
     return distance_cm_LEFT;
 }
 
@@ -122,7 +122,7 @@ float ultrasonic_right() {
     // printf("Distance right: %.2f cm\n", distance_cm_RIGHT);
 
     // sleep_ms(500);  // Delay for 500ms
-    printf("/nU_R: %f",distance_cm_RIGHT);
+    //printf("/nU_R: %f",distance_cm_RIGHT);
     return distance_cm_RIGHT;
 }
 
@@ -168,7 +168,7 @@ float ultrasonic_forward_a() {
     // printf("Distance forward a: %.2f cm\n", distance_cm_FORWARD_A);
 
     // sleep_ms(500);  // Delay for 500ms
-    printf("F_A: %f",distance_cm_FORWARD_A);
+    //printf("\nF_A: %f",distance_cm_FORWARD_A);
 
     return distance_cm_FORWARD_A;
 }
@@ -216,7 +216,7 @@ float ultrasonic_forward_b() {
     // printf("Distance forward b: %.2f cm\n", distance_cm_FORWARD_B);
 
     // sleep_ms(500);  // Delay for 500ms
-	printf("U_FB: %f",distance_cm_FORWARD_B);
+	printf("\nU_FB: %f",distance_cm_FORWARD_B);
     return distance_cm_FORWARD_B;
 }
 
@@ -224,9 +224,8 @@ bool collision_imminent_check(enum DIR dir, float threshold) {
     float measured_dist;  // Distance in cm returned from sensor funtion call.
     switch (dir) {
     case FORWARD:
-        //measured_dist = ultrasonic_forward_a(); 
-        measured_dist = (ultrasonic_forward_a() + ultrasonic_forward_b()) / 2;
-
+        measured_dist = ultrasonic_forward_a(); 
+        //measured_dist = (ultrasonic_forward_a() + ultrasonic_forward_b()) / 2;
         break;
     case LEFT:
         measured_dist = ultrasonic_left();
